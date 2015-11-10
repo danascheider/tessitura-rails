@@ -2,6 +2,10 @@ Given /^I am on the homepage$/ do
   visit '/'
 end
 
+When /^I click the '([^']*)' link$/ do |link|
+  click_link link
+end
+
 Then /^I should see the top navbar$/ do 
   expect(page).to have_selector '#navbar-top'
 end
