@@ -41,6 +41,7 @@ gem 'pg'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'cucumber-rails', '>= 1.4.2', require: false
+  gem 'factory_girl_rails', '~> 4.5'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
