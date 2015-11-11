@@ -16,10 +16,11 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'thin', '~> 1.6.4'
-gem 'font-awesome-rails'
+gem 'font-awesome-rails', '~> 4.4'
+gem 'jquery-ui-rails', '~> 5.0'
 
 # Use jquery as the JavaScript library
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.0'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
