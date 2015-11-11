@@ -1,14 +1,14 @@
 Feature: Homepage
+  Background:
+    Given I am on the homepage
 
   Scenario: Visiting the homepage
-    Given I am on the homepage
     Then I should see the top navbar
     And I should see a link to the 'About' view
     And I should see a link to the 'Sign Up' view
     And I should see a link to the 'Contact' view
 
   Scenario Outline: Homepage sections
-    Given I am on the homepage
     When I click the '<link>' link
     Then I should see the <id> view
 
@@ -19,8 +19,9 @@ Feature: Homepage
       | Contact | contact  |
 
   Scenario: Create a valid new user
-    Given I am on the homepage
+    Given there are no users
     When I submit the registration form with valid attributes
-    Then a new user should be created
+    Then there should be 1 user
     And I should get a confirmation e-mail
+    And I should be logged in
     And I should be rerouted to my dashboard
