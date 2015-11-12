@@ -18,6 +18,7 @@ gem 'bootstrap-sass', '~> 3.3.5'
 gem 'thin', '~> 1.6.4'
 gem 'font-awesome-rails', '~> 4.4'
 gem 'jquery-ui-rails', '~> 5.0'
+gem 'devise'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails', '~> 4.0'
