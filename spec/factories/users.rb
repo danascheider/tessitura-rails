@@ -1,6 +1,7 @@
 FactoryGirl.define do 
   factory :user do 
     password "foobarbaz22"
+    password_confirmation "foobarbaz22"
     first_name "User"
     last_name "Name"
 

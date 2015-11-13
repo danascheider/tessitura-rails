@@ -27,7 +27,11 @@ RSpec.describe "users/new", type: :view do
 
       assert_select "input#user_password[name=?]", "user[password]"
 
+      assert_select "input#user_password_confirmation[name=?]", "user[password_confirmation]"
+
       assert_select "input#user_email[name=?]", "user[email]"
+
+      assert_select "input#user_email_confirmation[name=?]", "user[email_confirmation]"
 
       assert_select "input#user_first_name[name=?]", "user[first_name]"
 

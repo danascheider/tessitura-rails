@@ -17,6 +17,13 @@ When /^I submit the registration form with valid attributes$/ do
   end
 end
 
+Then /^I should get a confirmation e-mail$/ do 
+  expect(UserMailer.deliveries.count).to eql 1
+end
+
 Then /^there should be (\d+) users?$/ do |count|
+  if count == '1' then @user = User.first;
+  else @users = User.all; end
+
   expect(User.count).to eql count.to_i
 end
