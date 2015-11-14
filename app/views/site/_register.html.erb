@@ -7,8 +7,7 @@
         <hr class='small'>
         <div class='row'>
           <div class='col-md-12'>
-            <% @user ||= User.new %>
-            <%= render partial: 'users/form' %>
+            <%= render partial: 'devise/registrations/form' %>
           </div>
         </div><!-- end .row (nested) -->
       </div> <!-- end .col-lg-10 -->

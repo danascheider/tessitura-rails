@@ -1,0 +1,37 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <fieldset class='form-group login-information'>
+    <legend>Login Information</legend>
+      <%= f.text_field :username, class: 'form-control', title: 'Username', placeholder: 'Username (required)' %>
+      <%= f.password_field :password, class: 'form-control half-width left', title: 'Password', placeholder: 'Password (required)' %>
+      <%= f.password_field :password_confirmation, class: 'form-control half-width right', title: 'Re-type Password', placeholder: 'Re-type Password (required)' %>
+      <%= f.email_field :email, class: 'form-control half-width left', title: 'E-mail Address', placeholder: 'E-mail Address (required)' %>
+      <%= f.email_field :email_confirmation, class: 'form-control half-width right', title: 'Re-type E-mail', placeholder: 'Re-type E-mail (required)' %>
+  </fieldset>
+
+  <fieldset class='form-group profile-information'>
+    <legend>Profile Information</legend>
+    <%= f.text_field :first_name, class: 'form-control half-width left', title: 'First Name', placeholder: 'First Name (required)' %>
+    <%= f.text_field :last_name, class: 'form-control half-width right', title: 'Last Name', placeholder: 'Last Name (required)' %><br>
+    <%= f.date_select :birthdate, class: 'form-control', title: 'Birth Date', placeholder: 'Birth Date' %>
+    <%= f.text_field :address_1, class: 'form-control', title: 'Address Line 1', placeholder: 'Address Line 1' %>
+    <%= f.text_field :address_2, class: 'form-control', title: 'Address Line 2', placeholder: 'Address Line 2' %>
+    <%= f.text_field :city, class: 'form-control', title: 'City', placeholder: 'City' %>
+    <%= f.text_field :state, class: 'form-control half-width left', title: 'State', placeholder: 'State' %>
+    <%= f.text_field :zip, class: 'form-control half-width right', title: 'Zip', placeholder: 'Zip' %>
+  </fieldset>
+  <fieldset class='form-group terms'>
+    <div class='checkbox'>
+      <%= f.label :terms, value: "I accept the Terms of Use" %>
+      <%= f.check_box :terms, class: 'checkbox' %>
+    </div>
+  </fieldset>
+  <fieldset class="form-group submit actions">
+    <%= f.submit 'Create Account', class: 'btn btn-dark half-width' %>
+    <%= f.submit 'Clear Form', type: :reset, class: 'btn btn-dark half-width' %>
+  </fieldset>
+  <fieldset class="form-group help-links">
+    <%= render "devise/shared/links" %>
+  </fieldset>
+<% end %>

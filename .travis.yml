@@ -1,0 +1,16 @@
+language: ruby
+rvm: 
+  - 2.2.3
+env: 
+  - COVERAGE=true
+  - MANDRILL_USERNAME=dana.scheider@gmail.com
+before_script: 
+  - rake db:setup
+branches: 
+  only:
+    - dev
+    - staging
+    - master
+sudo: false
+notifications:
+  - email: false
