@@ -27,3 +27,7 @@ Then /^there should be (\d+) users?$/ do |count|
 
   expect(User.count).to eql count.to_i
 end
+
+Then /^I should be rerouted to my dashboard$/ do 
+  expect(current_path).to eql "/users/#{@user.id}/dashboard"
+end

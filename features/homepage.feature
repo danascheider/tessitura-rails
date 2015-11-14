@@ -23,5 +23,4 @@ Feature: Homepage
     When I submit the registration form with valid attributes
     Then there should be 1 user
     And I should get a confirmation e-mail
-    And I should be logged in
     And I should be rerouted to my dashboard

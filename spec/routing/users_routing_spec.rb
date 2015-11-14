@@ -19,8 +19,8 @@ RSpec.describe UsersController, type: :routing do
       expect(:get => "/users/1/edit").to route_to("users#edit", :id => "1")
     end
 
-    it "routes creation to Devise" do
-      expect(:post => "/users").to route_to("devise/registrations#create")
+    it "routes creation to the registration controller" do
+      expect(:post => "/users").to route_to("users/registrations#create")
     end
 
     it "routes to #update via PUT" do
