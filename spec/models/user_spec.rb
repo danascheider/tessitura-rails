@@ -44,4 +44,11 @@ RSpec.describe User, type: :model do
       expect(user2).not_to be_valid
     end
   end
+
+  describe 'full_name' do 
+    it 'concatenates the first and last names' do 
+      user = FactoryGirl.create(:user)
+      expect(user.full_name).to eql 'User Name'
+    end
+  end
 end

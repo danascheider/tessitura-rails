@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :last_name, :username
   validates :email, confirmation: true
   validates_acceptance_of :terms
+
+  def full_name
+    "#{first_name} #{last_name}"
+  end
 end
