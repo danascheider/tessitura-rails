@@ -17,8 +17,23 @@ When /^I submit the registration form with valid attributes$/ do
   end
 end
 
+When /^I submit the registration form with invalid attributes$/ do 
+  within '#new_user' do 
+    fill_in 'user[username]', with: ''
+    click_button 'Create Account'
+  end
+end
+
 Then /^I should get a confirmation e-mail$/ do 
   expect(UserMailer.deliveries.count).to eql 1
+end
+
+Then /^I should not get a confirmation e-mail$/ do 
+  expect(UserMailer.deliveries.count).to eql 0
+end
+
+Then /^there should be no users$/ do 
+  expect(User.count).to eql 0
 end
 
 Then /^there should be (\d+) users?$/ do |count|

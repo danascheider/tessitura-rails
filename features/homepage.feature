@@ -24,3 +24,11 @@ Feature: Homepage
     Then there should be 1 user
     And I should get a confirmation e-mail
     And I should be rerouted to my dashboard
+
+  Scenario: Attempt to create an invalid new user
+    Given there are no users
+    When I submit the registration form with invalid attributes
+    Then there should be no users
+    And I should not get a confirmation e-mail
+    And I should be on the homepage
+    And I should see a message that the user was not saved
