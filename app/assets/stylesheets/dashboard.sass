@@ -13,8 +13,6 @@ $navbar-padding-vertical: (($navbar-height - $line-height-computed) / 2) !defaul
 $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
 
 #dashboard-wrapper
-  nav.navbar-default
-
   .navbar-top-links
     -webkit-touch-callout: none
     -webkit-user-select  : none 
@@ -140,4 +138,6 @@ $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
       .navbar > .container-fluid &
         margin-left: -$navbar-padding-horizontal
 
-
+  .navbar-static-side,
+  .sidebar-collapse
+    height: 100vh
