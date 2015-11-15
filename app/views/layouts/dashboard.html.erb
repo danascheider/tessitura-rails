@@ -237,8 +237,7 @@
             </li> 
             <li class='divider'></li>
             <li>
-              <a class='internal-link' href='/dashboard' data-target='dashboard' onclick='return false'>
-                <i class='fa fa-dashboard fa-fw'></i>  Dashboard
+              <%= link_to "<i class='fa fa-dashboard fa-fw'></i>  Dashboard", dashboard_user_path(current_user) %>
               </a>
             </li>
             <li class='divider'></li>
@@ -272,7 +271,7 @@
               </div> <!-- end input-group -->
             </li>
             <li>
-              <a href='/dashboard' class='dashboard-link sidebar-link internal-link' data-target='dashboard' onclick='return false'><i class='fa fa-dashboard fa-fw'></i> Dashboard</a>
+              <%= link_to raw("<i class='fa fa-dashboard fa-fw'></i> Dashboard"), dashboard_user_path(current_user), :class => 'dashboard-link sidebar-link' %>
             </li>
             <li>
               <a href='/tasks' class='task-page-link sidebar-link internal-link' data-target='tasks' onclick='return false'><i class='fa fa-tasks fa-fw'></i> Tasks</a>
