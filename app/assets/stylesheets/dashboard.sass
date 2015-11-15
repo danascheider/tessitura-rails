@@ -1,0 +1,73 @@
+$panel-blue-color: #418bca
+
+$screen-sm: 768px !default
+$screen-sm-min: $screen-sm !default
+$line-height-base: 1.428571429 !default
+$font-size-base: 14px !default
+$font-size-large: ceil(($font-size-base * 1.25)) !default
+$line-height-computed: floor(($font-size-base * $line-height-base)) !default
+$grid-gutter-width: 30px !default
+$grid-float-breakpoint: $screen-sm-min !default
+$navbar-height: 50px !default
+$navbar-padding-vertical: (($navbar-height - $line-height-computed) / 2) !default
+$navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
+
+#dashboard-wrapper
+  nav.navbar-default
+
+  .navbar-top-links
+    margin-right: 10px
+    height: 100%
+
+  .navbar-top-links > li
+    display: inline
+    position: relative
+    float: right
+
+  .navbar-brand,  
+  .navbar-dash-link,
+  .navbar-nav > li > a 
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25)
+
+  .navbar-brand,
+  .navbar-dash-link
+    -webkit-touch-callout: none
+    -webkit-user-select  : none 
+    -khtml-user-select   : none 
+    -moz-user-select     : none 
+    -ms-user-select      : none 
+    user-select          : none
+    color                : #ccc
+    
+    &:hover
+      color: lighten($panel-blue-color, 25%)
+
+    & > i
+      margin-right: 1.313em
+
+  .navbar-dash-link
+    font-weight  : 400
+    padding-left : 0
+    margin-left  : 0
+
+  .navbar-brand,
+  .navbar-dash-link
+    float: left
+    padding: $navbar-padding-vertical $navbar-padding-horizontal
+    font-size: $font-size-large
+    line-height: $line-height-computed
+    height: $navbar-height
+
+    &:hover,
+    &:focus
+      text-decoration: none
+
+    > img
+      display: block
+
+    @media (min-width: $grid-float-breakpoint)
+      .navbar > .container &,
+      .navbar > .container-fluid &
+        margin-left: -$navbar-padding-horizontal
+
+
