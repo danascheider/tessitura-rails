@@ -1,9 +1,24 @@
+showSidebar = ->
+  $('.navbar-static-side').show()
+  $('.sidebar-collapse').slideDown()
+
+hideSidebar = ->
+  $('.sidebar-collapse').slideUp()
+  setTimeout(( ->
+    $('.navbar-static-side').hide()), 400)
+
+toggleSidebar = ->
+  if $('.sidebar-collapse').is(':visible')
+    hideSidebar()
+  else
+    showSidebar()
+
 $(document).ready ->
   
   # Expand side menu when the user clicks the menu icon
 
   $('.navbar-brand').click ->
-    $('.sidebar-collapse').slideToggle()
+    toggleSidebar()
 
   # Hide side menu and dropdown menus when the user double-clicks
 
