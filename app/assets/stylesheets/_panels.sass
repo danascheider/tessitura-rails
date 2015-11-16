@@ -26,3 +26,28 @@ $panel-primary-color: $panel-blue-color
 .panel-red > .panel-heading 
   background-color: $panel-red-color
   color: #fff
+
+#dashboard-top-widgets
+  .dash-widget
+    cursor: pointer
+
+  .panel-blue.dash-widget:hover,
+  .panel-primary.dash-widget:hover
+    .panel-body span.pull-right,
+    .panel-body span.pull-left
+      color: $panel-blue-color
+
+  .panel-green.dash-widget:hover
+    .panel-body span.pull-right,
+    .panel-body span.pull-left
+      color: $panel-green-color
+
+  .panel-yellow.dash-widget:hover
+    .panel-body span.pull-right,
+    .panel-body span.pull-left
+      color: $panel-yellow-color
+
+  .panel-red.dash-widget:hover
+    .panel-body span.pull-right,
+    .panel-body span.pull-left
+      color: $panel-red-color
