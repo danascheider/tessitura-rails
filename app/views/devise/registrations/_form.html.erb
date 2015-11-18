@@ -36,7 +36,7 @@
     <legend>Profile Information</legend>
     <%= f.text_field :first_name, class: 'form-control half-width left', title: 'First Name', placeholder: 'First Name (required)' %>
     <%= f.text_field :last_name, class: 'form-control half-width right', title: 'Last Name', placeholder: 'Last Name (required)' %><br>
-    <%= f.date_select :birthdate, class: 'form-control', title: 'Birth Date', placeholder: 'Birth Date' %>
+    <%= f.date_field :birthdate, class: 'form-control', title: 'Birth Date', start_year: 1925, end_year: 2015, include_blank: true, default: nil %>
     <%= f.text_field :address_1, class: 'form-control', title: 'Address Line 1', placeholder: 'Address Line 1' %>
     <%= f.text_field :address_2, class: 'form-control', title: 'Address Line 2', placeholder: 'Address Line 2' %>
     <%= f.text_field :city, class: 'form-control', title: 'City', placeholder: 'City' %>
