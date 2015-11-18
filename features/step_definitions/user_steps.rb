@@ -32,6 +32,10 @@ Then /^I should not get a confirmation e-mail$/ do
   expect(UserMailer.deliveries.count).to eql 0
 end
 
+Then /^I should see a message that the user was not saved$/ do 
+  expect(page).to have_content 'prevented your account from being created'
+end
+
 Then /^there should be no users$/ do 
   expect(User.count).to eql 0
 end

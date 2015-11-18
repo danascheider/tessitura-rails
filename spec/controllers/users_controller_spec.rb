@@ -55,7 +55,7 @@ RSpec.describe UsersController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       before(:each) do 
-        ActionMailer::Base.deliveries.clear
+        UserMailer.deliveries.clear
       end
 
       it "creates a new User" do

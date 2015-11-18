@@ -1,6 +1,28 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <% if flash[:errors] %>
+    <div id='form_errors' class="panel panel-danger">
+      <div class='panel-heading'><%= pluralize(flash[:errors].count, "error") %> prevented your account from being created:</div>
+
+      <div class='panel-body'>
+        <ul>
+          <% flash[:errors].each do |error| %>
+            <li><%= error[0].gsub('_', ' ').capitalize %> <%= error[1][0] %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <% if notice %>
+    <p class='notice'><%= notice %></p>
+  <% end %>
+
+  <% if alert %>
+    <p class='alert'><%= alert %></p>
+  <% end %>
+
   <fieldset class='form-group login-information'>
     <legend>Login Information</legend>
       <%= f.text_field :username, class: 'form-control', title: 'Username', placeholder: 'Username (required)' %>
