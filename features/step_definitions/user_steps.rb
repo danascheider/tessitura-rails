@@ -4,7 +4,6 @@ end
 
 When /^I submit the registration form with valid attributes$/ do 
   within '#new_user' do 
-    fill_in 'user[username]', with: 'newuser2016'
     fill_in 'user[password]', with: '2016usernew'
     fill_in 'user[password_confirmation]', with: '2016usernew'
     fill_in 'user[email]', with: 'newuser2016@example.com'
@@ -19,7 +18,7 @@ end
 
 When /^I submit the registration form with invalid attributes$/ do 
   within '#new_user' do 
-    fill_in 'user[username]', with: ''
+    fill_in 'user[email]', with: ''
     click_button 'Create Account'
   end
 end

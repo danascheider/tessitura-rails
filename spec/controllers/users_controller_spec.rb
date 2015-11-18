@@ -5,17 +5,17 @@ RSpec.describe UsersController, type: :controller do
 
   let(:valid_attributes) {
     {
-      username: 'foobarbaz256',
+      email: 'foobar@baz.com',
+      email_confirmation: 'foobar@baz.com',
       password: 'raboof333',
       password_confirmation: 'raboof333',
-      email: 'foobar@baz.com',
       first_name: 'Jacob',
       last_name: 'Boyle'
     }
   }
 
   let(:invalid_attributes) {
-    {username: nil}
+    {email: nil}
   }
 
   let(:valid_session) { {} }

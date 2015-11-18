@@ -25,11 +25,10 @@
 
   <fieldset class='form-group login-information'>
     <legend>Login Information</legend>
-      <%= f.text_field :username, class: 'form-control', title: 'Username', placeholder: 'Username (required)' %>
-      <%= f.password_field :password, class: 'form-control half-width left', title: 'Password', placeholder: 'Password (required)' %>
-      <%= f.password_field :password_confirmation, class: 'form-control half-width right', title: 'Re-type Password', placeholder: 'Re-type Password (required)' %>
       <%= f.email_field :email, class: 'form-control half-width left', title: 'E-mail Address', placeholder: 'E-mail Address (required)' %>
       <%= f.email_field :email_confirmation, class: 'form-control half-width right', title: 'Re-type E-mail', placeholder: 'Re-type E-mail (required)' %>
+      <%= f.password_field :password, class: 'form-control half-width left', title: 'Password', placeholder: 'Password (required)' %>
+      <%= f.password_field :password_confirmation, class: 'form-control half-width right', title: 'Re-type Password', placeholder: 'Re-type Password (required)' %>
   </fieldset>
 
   <fieldset class='form-group profile-information'>

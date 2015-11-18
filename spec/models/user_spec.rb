@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  it { is_expected.to respond_to(:username) }
   it { is_expected.to respond_to(:password) }
   it { is_expected.to respond_to(:email) }
   it { is_expected.to respond_to(:first_name) }
@@ -25,17 +24,11 @@ RSpec.describe User, type: :model do
   describe 'validations' do 
     let(:user) { FactoryGirl.create(:user) }
 
-    ["username", "password", "email", "first_name", "last_name"].each do |attribute|
+    ["password", "email", "first_name", "last_name"].each do |attribute|
       it "is invalid without a #{attribute}" do 
         user.send("#{attribute}=".to_sym, nil)
         expect(user).not_to be_valid
       end
-    end
-
-    it 'is invalid without a unique username' do 
-      user2 = FactoryGirl.create(:user)
-      user2.username = user.username
-      expect(user2).not_to be_valid
     end
 
     it 'is invalid without a unique email' do 

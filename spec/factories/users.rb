@@ -4,11 +4,7 @@ FactoryGirl.define do
     password_confirmation "foobarbaz22"
     first_name "User"
     last_name "Name"
-
-    sequence :username do |n|
-      "user2016#{n}"
-    end
-    
+        
     sequence :email do |n|
       "user2016#{n}@example.com"
     end
