@@ -5,14 +5,7 @@ $main-dark-gray: rgba(0,0,0,0.87) !default;
 /* ------------------------------- */
 
 body {
-  padding-top: 100px;
   background-color: #ebeef2;
-}
-
-@media(min-width:768px) {
-  body {
-    padding-top: 50px;
-  }
 }
 
 /* Wrappers */
@@ -46,6 +39,16 @@ body {
 /* ------------------------------- */
 
 /* Top Right Navigation Dropdown Styles */
+
+#dashboard-wrapper {
+  padding-top: 100px
+}
+
+@media(min-width:768px) {
+  #dashboard-wrapper {
+    padding-top: 50px
+  }
+}
 
 #dashboard-wrapper > .navbar-top-links li {
   display: inline-block;
