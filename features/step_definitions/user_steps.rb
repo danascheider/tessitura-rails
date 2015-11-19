@@ -2,6 +2,10 @@ Given /^there are no users$/ do
   User.count == 0
 end
 
+Given /^there is 1 user$/ do 
+  @user = FactoryGirl.create(:user)
+end
+
 When /^I submit the registration form with valid attributes$/ do 
   within '#new_user' do 
     fill_in 'user[password]', with: '2016usernew'
