@@ -19,9 +19,9 @@ Then /^I should see a link to the '([^']*)' view$/ do |title|
 end
 
 Then /^I should see the login form$/ do 
-  expect(page.find('#login-form')).to be_visible
+  expect(page.find('#new_session')).to be_visible
 end
 
 Then /^I should not see the login form$/ do 
-  expect(page).not_to have_selector '#login-form', visible: true
+  expect(page).not_to have_selector '#new_session', visible: true
 end

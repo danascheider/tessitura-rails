@@ -1,3 +1,7 @@
+Given /^I have an active account$/ do 
+  @user = FactoryGirl.create(:user)
+end
+
 Given /^I have clicked the '([^']*)' link$/ do |text|
   click_link text
 end
