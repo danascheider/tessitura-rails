@@ -18,6 +18,6 @@ Then /^I should be on the homepage$/ do
   expect(current_path).to eql '/'
 end
 
-Then /^I should be redirected to the homepage$/ do 
-  step 'I should be on the homepage'
+Then /^I should be redirected to a login page$/ do 
+  expect(current_path).to eql '/users/sign_in'
 end

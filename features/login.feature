@@ -23,4 +23,4 @@ Feature: User login
     Given there is 1 user
     When I try to log in with invalid credentials
     And I navigate to the dashboard
-    Then I should be redirected to the homepage
+    Then I should be redirected to a login page
