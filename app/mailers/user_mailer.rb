@@ -6,4 +6,9 @@ class UserMailer < Devise::Mailer
     opts[:subject] = "Tessitura e-mail verification"
     super
   end
+
+  def reset_password_instructions(record, token, opts={})
+    opts[:subject] = "Tessitura password reset instructions"
+    super
+  end
 end
