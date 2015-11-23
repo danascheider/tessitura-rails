@@ -1,12 +1,14 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-lg-6 col-lg-offset-3 centered'>
-      <h1 class='page-title'>Log in</h1>
+<div id='#utility'>
+  <div class='container'>
+    <div class='row'>
+      <div class='col-lg-8 col-lg-offset-2 centered'>
+        <h1 class='page-title'>Log in</h1>
 
-      <%= render 'form' %>
-      
-      <span class='pull-left'><%= link_to 'Sign Up', '/#register' %></span>
-      <span class='pull-right'><%= link_to 'Forgot your password?', new_password_path(resource_name)%></span>
+        <%= render 'form' %>
+        
+        <span class='pull-left'><%= link_to 'Sign Up', '/#register' %></span>
+        <span class='pull-right'><%= link_to 'Forgot your password?', new_password_path(resource_name)%></span>
+      </div>
     </div>
   </div>
 </div>
