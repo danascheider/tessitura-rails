@@ -21,3 +21,7 @@ end
 Then /^I should be redirected to a login page$/ do 
   expect(current_path).to eql '/users/sign_in'
 end
+
+Then /^I should not be rerouted to my dashboard$/ do 
+  expect(current_path).not_to match(/dashboard/)
+end

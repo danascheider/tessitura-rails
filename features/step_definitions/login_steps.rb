@@ -20,3 +20,10 @@ When /^I try to log in with invalid credentials$/ do
     click_button 'Sign In'
   end
 end
+
+When(/^I submit the password reset form with my e\-mail address$/) do
+  within '#new_user' do     # yes, this is what it calls the password reset form
+    fill_in 'Email', with: @user.email
+    click_on 'Send me reset instructions'
+  end
+end
