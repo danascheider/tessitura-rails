@@ -1,3 +1,10 @@
+@import "bootstrap-sprockets"
+@import "bootstrap"
+@import "login-form"
+@import "panels"
+@import "registration-form"
+@import "font-awesome"
+
 $panel-blue-color: #418bca
 
 $screen-sm: 768px !default
@@ -156,4 +163,11 @@ $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
   .huge
     font-size: 2.5em
 
-@import 'panels'
+form input.btn-dark
+  color: #fff
+  background-color: $panel-blue-color
+
+  &:hover, &:focus
+    color: #fff
+    background-color: darken($panel-blue-color, 5%)
+    text-decoration: underline
