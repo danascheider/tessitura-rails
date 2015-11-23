@@ -9,16 +9,14 @@
     </div>
 
     <% if devise_mapping.rememberable? -%>
-      <span class="checkbox pull-left">
+      <span class="checkbox">
         <%= f.check_box :remember_me %>
         <%= f.label :remember_me %>
       </span>
     <% end -%>
 
-    <span class='pull-right'>
-      <%= link_to 'Need Help?', '/', class: 'login-help-link' %> 
-    </span>
-
     <%= f.submit "Sign In", class: 'btn btn-lg btn-dark btn-block' %>
+    <span><%= link_to 'Sign Up', '/#register' %></span>
+    <span class='pull-right'><%= link_to 'Forgot your password?', new_password_path(resource_name)%></span>
   </div>
 <% end %>

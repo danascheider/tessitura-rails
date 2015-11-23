@@ -3,7 +3,13 @@ Given /^I am on the homepage$/ do
 end
 
 When /^I click the '([^']*)' link$/ do |link|
-  click_link link
+  if link == 'Sign Up'
+    within 'nav' do 
+      click_link 'Sign Up'
+    end
+  else
+    click_link link
+  end
 end
 
 Then /^I should see the top navbar$/ do 
