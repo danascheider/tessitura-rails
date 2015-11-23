@@ -1,0 +1,14 @@
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { id: 'reset_instructions_form', method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+  <div class='form-elements'>
+    <div class="field">
+      <%= f.email_field :email, class: 'form-control', placeholder: 'E-mail Address', title: 'Enter your e-mail address', autofocus: true %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Send me reset instructions", class: 'btn btn-lg btn-dark btn-block' %>
+    </div>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
