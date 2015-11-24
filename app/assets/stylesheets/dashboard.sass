@@ -20,6 +20,11 @@ $navbar-padding-vertical: (($navbar-height - $line-height-computed) / 2) !defaul
 $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
 
 #dashboard-wrapper
+  font-family     : "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif
+
+  a
+    color: #bbb
+  
   .navbar-top-links
     -webkit-touch-callout: none
     -webkit-user-select  : none 
@@ -98,6 +103,9 @@ $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
     & .dropdown-user
       right: 0
       left : auto
+
+  .navbar-default
+    background-color: rgba(0,0,0,0.87)
 
   .navbar-brand,  
   .navbar-dash-link,
