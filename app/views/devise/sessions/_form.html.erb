@@ -1,4 +1,12 @@
 <%= form_for(resource, as: resource_name, url: user_session_path, html: {id: 'new_session'}) do |f| %>
+  <%= devise_error_messages! %>
+
+  <% if flash[:alert] %>
+    <div id='login_errors' class='alert alert-danger'>
+      <%= flash[:alert] if flash[:alert].is_a? String %> <%= link_to "Need help?", new_password_path(resource_name) %>
+    </div>
+  <% end %>
+
   <div class='form-elements'>
     <div class='form-group'>
       <%= f.email_field :email, autofocus: true, placeholder: 'E-mail', class: 'form-control' %>

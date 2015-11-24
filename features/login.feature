@@ -20,6 +20,12 @@ Feature: User login
     Then I should be rerouted to my dashboard
 
   Scenario: Invalid account
+    Given I am on the login page
+    When I try to log in with invalid credentials
+    Then I should be on the login page
+    And I should see a message that I could not be logged in
+
+  Scenario: Unauthorized user goes to dashboard
     Given there is 1 user
     When I try to log in with invalid credentials
     And I navigate to the dashboard
