@@ -37,5 +37,5 @@ Then(/^I should see a message that I could not be logged in$/) do
 end
 
 Then /^I should see a message that reset information has been sent$/ do 
-  expect(page).to have_content 'has been sent'
+  expect(page).to have_content 'Success'
 end
