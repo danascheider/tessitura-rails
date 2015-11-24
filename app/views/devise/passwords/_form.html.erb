@@ -1,5 +1,11 @@
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { id: 'reset_instructions_form', method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+
+  <% if flash[:notice] %>
+    <div class='alert alert-success'><%= flash[:notice] if flash[:notice].is_a? String %></div>
+  <% elsif flash[:alert] %>
+    <div class='alert alert-danger'><%= flash[:alert] if flash[:alert].is_a? String %> <%= link_to "Create one?", "/#register" %></div>
+  <% end %>
+
   <div class='form-elements'>
     <div class="field">
       <%= f.email_field :email, class: 'form-control', placeholder: 'E-mail Address', title: 'Enter your e-mail address', autofocus: true %>

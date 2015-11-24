@@ -35,3 +35,7 @@ end
 Then(/^I should see a message that I could not be logged in$/) do
   expect(page).to have_content 'Invalid email or password'
 end
+
+Then /^I should see a message that reset information has been sent$/ do 
+  expect(page).to have_content 'has been sent'
+end
