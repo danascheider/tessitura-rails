@@ -19,7 +19,7 @@ a
 
 a:hover,
 a:focus 
-  color          : #418bca
+  color          : $panel-blue-color
   text-decoration: underline
 
 a:focus
@@ -250,6 +250,7 @@ label
 .nav:after,
 .navbar:after,
 .navbar-header:after,
+.navbar-brand:after,
 .panel-body:after,
 .row:after
   clear: both
@@ -435,12 +436,12 @@ label
 .navbar-default
   background-color: $navbar-background-color
 
-  & .navbar-branc
+  & .navbar-brand
     color: #ccc
 
     &:hover,
     &:focus 
-      color: #72b1e5
+      color: lighten($panel-blue-color, 20%)
 
   & .navbar-toggle
     border-color: #ddd

@@ -24,6 +24,18 @@ $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
 
   a
     color: #bbb
+
+  nav
+    border-color: transparent
+
+  #top-dash-menu > li:hover > a,
+  #top-dash-menu > li:focus > a,
+  #side-menu > li:hover > a,
+  #side-menu > li:focus > a
+    background-color: #000
+
+  #side-menu 
+    margin-top: 0
   
   .navbar-top-links
     -webkit-touch-callout: none
@@ -48,14 +60,9 @@ $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
         color          : #bbb
         padding        : 15px
 
-      &:hover,
-      &:focus
-        background-color: #000
-        color           : lighten($panel-blue-color, 25%)
-        text-decoration : none
-
-        & > a
-          color: lighten($panel-blue-color, 25%)
+      &:hover > a,
+      &:focus > a
+        color           : lighten($panel-blue-color, 20%)
 
       &.open > a
         color: #72b1e5
@@ -79,7 +86,7 @@ $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
         background-color: #000
 
         & > a
-          color: lighten($panel-blue-color, 25%)
+          color: lighten($panel-blue-color, 20%)
 
         & div
           white-space: normal
@@ -123,7 +130,7 @@ $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
     color                : #ccc
     
     &:hover
-      color: lighten($panel-blue-color, 25%)
+      color: lighten($panel-blue-color, 20%)
 
     & > i
       margin-right: 1.313em
@@ -157,6 +164,10 @@ $navbar-padding-horizontal: floor(($grid-gutter-width / 2)) !default
     background: transparent
     display: none
     position: fixed
+
+    & li:hover > a,
+    & li:focus > a
+      color: lighten($panel-blue-color, 20%)
 
   .sidebar-collapse
     background-color: rgba(0,0,0,0.87)
