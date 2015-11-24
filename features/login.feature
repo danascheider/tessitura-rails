@@ -19,8 +19,15 @@ Feature: User login
     When I submit the login form with my credentials
     Then I should be rerouted to my dashboard
 
-  Scenario: Invalid account
+  Scenario: Invalid account on utility page
     Given I am on the login page
+    When I try to log in with invalid credentials
+    Then I should be on the login page
+    And I should see a message that I could not be logged in
+
+  Scenario: Invalid account on homepage
+    And I am on the homepage
+    And I have clicked the 'Sign In' link
     When I try to log in with invalid credentials
     Then I should be on the login page
     And I should see a message that I could not be logged in
