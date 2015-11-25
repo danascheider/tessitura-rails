@@ -20,14 +20,17 @@ $(document).ready ->
   $('.navbar-brand').click ->
     toggleSidebar()
 
-  # Hide side menu and dropdown menus when the user double-clicks
+  # Hide the dropdown menus when the user clicks outside them
+
+  $('body').click (e) ->
+    if !($(e.target).closest('ul.dropdown-menu').length || $(e.target).closest('li.dropdown').length)
+      $('ul.dropdown-menu').hide()
+
+  # Hide side menu when the user double-clicks
 
   $('body').dblclick (e) ->
     if !($(e.target).closest('.sidebar-collapse').length)
       $('.sidebar-collapse').hide()
-
-    if !($(e.target).closest('ul.dropdown-menu').length)
-      $('ul.dropdown-menu').hide()
 
   # Show dropdown menu when a user clicks on the li
   
