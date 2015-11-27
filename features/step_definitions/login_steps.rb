@@ -2,6 +2,11 @@ Given /^I am on the login page$/ do
   visit '/users/sign_in'
 end
 
+Given /^I am logged in$/ do 
+  visit '/users/sign_in'
+  step 'I submit the login form with my credentials'
+end
+
 When /^I submit the login form with my credentials$/ do 
   within '#new_session' do 
     fill_in 'user[email]', with: @user.email
