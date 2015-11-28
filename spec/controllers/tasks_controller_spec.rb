@@ -19,16 +19,17 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe TasksController, type: :controller do
+  let(:user) { FactoryGirl.create(:user) }
 
   # This should return the minimal set of attributes required to create a valid
   # Task. As you add validations to Task, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { title: 'My Task', user_id: user.id, priority: 'Normal' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { title: nil }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +104,14 @@ RSpec.describe TasksController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { status: 'Blocking' }
       }
 
       it "updates the requested task" do
         task = Task.create! valid_attributes
         put :update, {:id => task.to_param, :task => new_attributes}, valid_session
         task.reload
-        skip("Add assertions for updated state")
+        expect(task.status).to eql 'Blocking'
       end
 
       it "assigns the requested task as @task" do
