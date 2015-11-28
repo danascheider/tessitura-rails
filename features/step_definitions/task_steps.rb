@@ -9,3 +9,6 @@ When /^I visit my tasks page$/ do
   visit "/users/#{@user.id}/tasks"
 end
 
+Then /^I should see (\d+) tasks in the '([^'\s])' column$/ do |count, column|
+  
+end
