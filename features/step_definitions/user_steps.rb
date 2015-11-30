@@ -27,6 +27,11 @@ When /^I submit the registration form with invalid attributes$/ do
   end
 end
 
+When /^I visit the other user's dashboard$/ do 
+  other_uid = User.where.not(:id => @user.id).first.id
+  visit "/users/#{other_uid}/dashboard"
+end
+
 Then /^I should get a confirmation e-mail$/ do 
   expect(UserMailer.deliveries.count).to eql 1
 end
