@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  resources :tasks
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords" }
   resources :users do 
     get 'dashboard', on: :member
 
-    resources :tasks
+    resources :tasks, shallow: true
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
