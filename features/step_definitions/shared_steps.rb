@@ -6,6 +6,10 @@ Given /^I have clicked the '([^']*)' link$/ do |text|
   click_link text
 end
 
+Given /^there is one other user$/ do 
+  FactoryGirl.create(:user)
+end
+
 When /^I double-click the '([^']*)' element$/ do |el|
   page.find(el).double_click
 end
@@ -20,6 +24,10 @@ end
 
 Then /^I should be redirected to a login page$/ do 
   expect(current_path).to eql '/users/sign_in'
+end
+
+Then /^I should be redirected to my dashboard$/ do 
+  expect(current_path).to eql "/users/#{@user.id}/dashboard"
 end
 
 Then /^I should not be rerouted to my dashboard$/ do 
