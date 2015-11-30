@@ -274,7 +274,7 @@
               <%= link_to raw("<i class='fa fa-dashboard fa-fw'></i> Dashboard"), dashboard_user_path(current_user), :class => 'dashboard-link sidebar-link' %>
             </li>
             <li>
-              <a href='/tasks' class='task-page-link sidebar-link internal-link' data-target='tasks' onclick='return false'><i class='fa fa-tasks fa-fw'></i> Tasks</a>
+              <%= link_to raw("<i class='fa fa-tasks fa-fw'></i> Tasks"), user_tasks_path(current_user), :class => 'task-page-link sidebar-link' %>
             </li>
             <li>
               <a href='/local' class='local-page-link sidebar-link internal-link' data-target='local' onclick='return false'><i class='fa fa-map-marker fa-fw' onclick='return false'></i> Local</a>
