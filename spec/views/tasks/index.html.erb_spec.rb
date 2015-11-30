@@ -2,30 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "tasks/index", type: :view do
   before(:each) do
-    assign(:tasks, [
-      Task.create!(
-        :title => "Title",
-        :status => "In Progress",
-        :priority => "High",
-        :notes => "Notes",
-        :position => 1
-      ),
-      Task.create!(
-        :title => "Title",
-        :status => "In Progress",
-        :priority => "High",
-        :notes => "Notes",
-        :position => 1
-      )
-    ])
+    @user = FactoryGirl.create(:user)
+    assign(:tasks, FactoryGirl.create_list(:task, 2, :title => "Task Title", :status => "In Progress", :priority => "High", :user_id => @user.id))
   end
 
   it "renders a list of tasks" do
+    allow_any_instance_of(ActionController::Base).to receive(:current_user).and_return(@user)
     render
-    assert_select "tr>td", :text => "Title".to_s, :count => 2
-    assert_select "tr>td", :text => "In Progress".to_s, :count => 2
-    assert_select "tr>td", :text => "High".to_s, :count => 2
-    assert_select "tr>td", :text => "Notes".to_s, :count => 2
-    assert_select "tr>td", :text => 1.to_s, :count => 2
+    assert_select "li", :text => /Task Title/, :count => 2
+    assert_select "li", :text => /In Progress/, :count => 2
+    assert_select "li", :text => /High/, :count => 2
   end
 end

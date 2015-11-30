@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "tasks/show", type: :view do
   before(:each) do
-    @task = assign(:task, Task.create!(
+    @task = assign(:task, FactoryGirl.create(:task,
       :title => "Title",
       :status => "In Progress",
       :priority => "Normal",
@@ -12,6 +12,7 @@ RSpec.describe "tasks/show", type: :view do
   end
 
   it "renders attributes in <p>" do
+    allow_any_instance_of(ActionController::Base).to receive(:current_user).and_return(@task.user)
     render
     expect(rendered).to match(/Title/)
     expect(rendered).to match(/Status/)
