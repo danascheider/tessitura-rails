@@ -1,0 +1,11 @@
+<ul>
+  <% @tasks.each do |task| %>
+    <li>
+      <%= link_to task.title, task %><br>
+      <strong>Deadline:</strong> <%= task.deadline %><br>
+      <strong>Status:</strong> <%= task.status %><br>
+      <strong>Priority:</strong> <%= task.priority %><br>
+      <strong>Notes:</strong> <%= task.notes %><br>
+    </li>
+  <% end %>
+</ul>
