@@ -37,6 +37,10 @@ Then /^I should be on the login page$/ do
   expect(current_path).to eql "/users/sign_in"
 end
 
+Then /^I should be redirected to the login page$/ do 
+  step 'I should be on the login page'
+end
+
 Then(/^I should see a message that I could not be logged in$/) do
   expect(page).to have_content 'Invalid email or password'
 end
