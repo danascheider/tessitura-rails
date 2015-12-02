@@ -15,7 +15,7 @@ When /^I double-click the '([^']*)' element$/ do |el|
 end
 
 When /^I navigate to the dashboard$/ do 
-  visit "/users/#{@user.id || 1}/dashboard"
+  visit "/users/#{@user.id}/dashboard"
 end
 
 Then /^I should be on the homepage$/ do 

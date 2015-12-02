@@ -1,8 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe "tasks/edit", type: :view do
+  include Warden::Test::Helpers
+
   before(:each) do
-    @task = assign(:task, Task.create!(
+    Warden.test_mode!
+
+    @task = assign(:task, FactoryGirl.create(:task,
       :title => "MyString",
       :status => "In Progress",
       :priority => "Low",
@@ -11,7 +15,13 @@ RSpec.describe "tasks/edit", type: :view do
     ))
   end
 
+  after(:each) do 
+    Warden.test_reset!
+  end
+
   it "renders the edit task form" do
+    allow_any_instance_of(ActionController::Base).to receive(:current_user).and_return(@task.user)
+
     render
 
     assert_select "form[action=?][method=?]", task_path(@task), "post" do

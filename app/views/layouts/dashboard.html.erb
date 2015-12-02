@@ -248,9 +248,7 @@
             </li>
             <li class='divider'></li>
             <li>
-              <a class='internal-link' href='/logout' data-target='logout'>
-                <i class='fa fa-sign-out fa-fw'></i> Logout
-              </a>
+              <%= link_to raw("<i class='fa fa-sign-out fa-fw'></i> Logout"), destroy_user_session_path, html: {class: 'internal-link', method: :delete} %>
             </li>
           </ul> <!-- end dropdown-user --> 
         </li> <!-- end profile dropdown -->

@@ -32,6 +32,7 @@ RSpec.describe UsersController, type: :controller do
   describe "GET #show" do
     it "assigns the requested user as @user" do
       user = FactoryGirl.create(:user)
+      allow_any_instance_of(ActionController::Base).to receive(:current_user).and_return(user)
       get :show, {:id => user.to_param}, valid_session
       expect(assigns(:user)).to eq(user)
     end
@@ -47,6 +48,7 @@ RSpec.describe UsersController, type: :controller do
   describe "GET #edit" do
     it "assigns the requested user as @user" do
       user = FactoryGirl.create(:user)
+      allow_any_instance_of(ActionController::Base).to receive(:current_user).and_return(user)
       get :edit, {:id => user.to_param}, valid_session
       expect(assigns(:user)).to eq(user)
     end

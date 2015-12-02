@@ -14,4 +14,8 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+
+  def shallow_args(parent, child)
+    child.try(:new_record) ? [parent, child] : child
+  end
 end
