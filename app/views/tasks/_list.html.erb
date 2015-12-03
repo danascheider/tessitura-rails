@@ -1,6 +1,6 @@
 <ul>
   <% @tasks.each do |task| %>
-    <li>
+    <li class='task'>
       <%= link_to task.title, task %><br>
       <strong>Deadline:</strong> <%= task.deadline %><br>
       <strong>Status:</strong> <%= task.status %><br>
