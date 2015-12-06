@@ -2,8 +2,18 @@ Given /^I have an active account$/ do
   @user = FactoryGirl.create(:user)
 end
 
+Given /^I am a logged-in user with (\d+) tasks$/ do |count|
+  step 'I have an active account'
+  FactoryGirl.create_list(:task, count.to_i, user_id: @user.id)
+  step 'I am logged in'
+end
+
 Given /^I have clicked the '([^']*)' link$/ do |text|
   click_link text
+end
+
+Given /^I have (\d+) complete tasks?$/ do |count|
+  FactoryGirl.create_list(:task, count.to_i, user_id: @user.id, status: 'Complete')
 end
 
 Given /^there is one other user$/ do 

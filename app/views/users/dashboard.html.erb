@@ -14,8 +14,12 @@
 
           <!-- This is the div with the number and kind of items -->
           <div class='col-xs-9 text-right'>
-            <div class='huge'>21</div>
-            <div>Incomplete Tasks!</div>
+
+            <% incomplete_tasks = @user.tasks.reject {|t| t.status == 'Complete' } %>
+            <% count = incomplete_tasks.count %>
+
+            <div class='huge'><%= count %></div>
+            <div>Incomplete <%= count == 1 ? 'Task' : 'Tasks' %>!</div>
           </div> <!-- end col-xs-9 text-right' -->
 
         </div>

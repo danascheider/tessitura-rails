@@ -13,15 +13,20 @@
       <div class='panel panel-primary dash-widget kanban-column'>
         <div class='panel-heading'><i class='fa fa-tasks fa-fw'></i> Backlog</div>
         <div class='panel-body'>
+          <ul>
           <% backlog.each do |task| %>
             <li class='task'>
-              <%= link_to task.title, task %><br>
-              <strong>Deadline:</strong> <%= task.display_deadline %><br>
-              <strong>Status:</strong> <%= task.status %><br>
+              <h3 class='task-list-title'><%= link_to task.title, task %></h3><br>
+              <% if task.display_deadline %>
+                <strong>Deadline:</strong> <%= task.display_deadline %><br>
+              <% end %>
               <strong>Priority:</strong> <%= task.priority %><br>
-              <strong>Notes:</strong> <%= task.notes %><br>
+              <% unless task.notes.blank? %>
+                <strong>Notes:</strong> <%= task.notes %><br>
+              <% end %>
             </li>
           <% end %>
+          </ul>
         </div>
       </div>
     </div>
@@ -29,15 +34,21 @@
       <div class='panel panel-green dash-widget kanban-column'>
         <div class='panel-heading'><i class='fa fa-road fa-fw'></i> In Progress</div>
         <div class='panel-body'>
+          <ul>
           <% in_progress.each do |task| %>
             <li class='task'>
-              <%= link_to task.title, task %><br>
-              <strong>Deadline:</strong> <%= task.display_deadline %><br>
+              <h3 class='task-list-title'><%= link_to task.title, task %></h3>
+              <% if task.display_deadline %> 
+                <strong>Deadline:</strong> <%= task.display_deadline %><br>
+              <% end %>
               <strong>Status:</strong> <%= task.status %><br>
               <strong>Priority:</strong> <%= task.priority %><br>
-              <strong>Notes:</strong> <%= task.notes %><br>
+              <% unless task.notes.blank? %>
+                <strong>Notes:</strong> <%= task.notes %><br>
+              <% end %>
             </li>
           <% end %>
+          </ul>
         </div>
       </div>
     </div>
@@ -45,15 +56,21 @@
       <div class='panel panel-yellow dash-widget kanban-column'>
         <div class='panel-heading'><i class='fa fa-minus-circle fa-fw'></i> Blocking</div>
         <div class='panel-body'>
+          <ul>
           <% blocking.each do |task| %>
             <li class='task'>
-              <%= link_to task.title, task %><br>
-              <strong>Deadline:</strong> <%= task.display_deadline %><br>
+              <h3 class='task-list-title'><%= link_to task.title, task %></h3><br>
+              <% if task.display_deadline %>
+                <strong>Deadline:</strong> <%= task.display_deadline %><br>
+              <% end %>
               <strong>Status:</strong> <%= task.status %><br>
               <strong>Priority:</strong> <%= task.priority %><br>
-              <strong>Notes:</strong> <%= task.notes %><br>
+              <% unless task.notes.blank? %>
+                <strong>Notes:</strong> <%= task.notes %><br>
+              <% end %>
             </li>
           <% end %>
+          </ul>
         </div>
       </div>
     </div>
