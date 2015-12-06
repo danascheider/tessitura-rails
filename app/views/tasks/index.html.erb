@@ -3,10 +3,15 @@
     <p id="notice"><%= notice %></p>
     <h1 class='page-header'>My Tasks</h1>
   </div>
+
+  <% backlog = @tasks.select {|task| task.status.blank? } %>
+  <% in_progress = @tasks.select {|task| task.status == 'In Progress' } %>
+  <% blocking = @tasks.select {|task| task.status == 'Blocking' } %>
+
   <div id='kanban_board' class='row'>
     <div id='backlog_tasks' class='col-lg-4 kanban-col'>
       <div class='panel panel-primary dash-widget kanban-column'>
-        <div class='panel-heading'><i class='fa fa-certificate fa-fw'></i> Backlog</div>
+        <div class='panel-heading'><i class='fa fa-tasks fa-fw'></i> Backlog</div>
         <div class='panel-body'>
           <%= render 'list' %>
         </div>
