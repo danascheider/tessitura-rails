@@ -2,7 +2,7 @@
   <% @tasks.each do |task| %>
     <li class='task'>
       <%= link_to task.title, task %><br>
-      <strong>Deadline:</strong> <%= task.deadline %><br>
+      <strong>Deadline:</strong> <%= task.display_deadline %><br>
       <strong>Status:</strong> <%= task.status %><br>
       <strong>Priority:</strong> <%= task.priority %><br>
       <strong>Notes:</strong> <%= task.notes %><br>

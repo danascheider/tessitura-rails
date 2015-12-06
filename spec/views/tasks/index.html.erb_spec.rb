@@ -11,6 +11,8 @@ RSpec.describe "tasks/index", type: :view do
     render
     assert_select "li", :text => /Task Title/, :count => 2
     assert_select "li", :text => /In Progress/, :count => 2
+    assert_select "li", :text => /#{Task.first.display_deadline}/
+    assert_select "li", :text => /#{Task.last.display_deadline}/
     assert_select "li", :text => /High/, :count => 2
   end
 end

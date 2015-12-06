@@ -8,6 +8,18 @@ class Task < ActiveRecord::Base
   belongs_to :user
   acts_as_list scope: :user
 
+  def display_deadline
+    return nil if deadline.blank?
+    
+    datetime = deadline.to_datetime
+    weekday = DateTime::DAYNAMES[datetime.cwday == 7 ? 0 : datetime.cwday]
+    month = DateTime::MONTHNAMES[datetime.month]
+    day = datetime.day
+    year = datetime.year
+
+    "#{weekday}, #{month} #{day}, #{year}"
+  end
+
   private
     def set_priority
       self.priority ||= 'Normal'

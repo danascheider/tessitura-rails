@@ -16,6 +16,6 @@ end
 
 Then /^I should see (\d+) tasks? in the '([^' ]*)' column$/ do |count, column|
   within column do 
-    expect(page).to have_selector('.task'), count: count.to_i
+    expect(page).to have_selector '.task', count: count.to_i
   end
 end

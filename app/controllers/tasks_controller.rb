@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   # GET /users/:id/tasks
   # GET /users/:id/tasks.json
   def index
-    @tasks = current_user.tasks
+    @tasks = User.find(params[:user_id]).tasks
   end
 
   # GET /tasks/1

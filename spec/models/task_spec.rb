@@ -7,6 +7,7 @@ RSpec.describe Task, type: :model do
   it { is_expected.to respond_to :priority }
   it { is_expected.to respond_to :notes }
   it { is_expected.to respond_to :user_id }
+  it { is_expected.to respond_to :display_deadline }
 
   describe 'validations' do 
     let(:task) { FactoryGirl.create(:task) }
@@ -41,6 +42,29 @@ RSpec.describe Task, type: :model do
       it 'is invalid with another priority level' do 
         task.priority = 'foobar'
         expect(task).not_to be_valid
+      end
+    end
+
+    context 'title' do 
+      it 'is invalid without a title' do 
+        task.title = nil
+        expect(task).not_to be_valid
+      end
+    end
+  end
+
+  describe 'display_deadline' do 
+    context 'when the deadline is present' do 
+      it 'returns the date in human readable form' do 
+        task = FactoryGirl.create(:task, deadline: '2015-10-22 18:12:00')
+        expect(task.display_deadline).to eql 'Thursday, October 22, 2015'
+      end
+    end
+
+    context 'when the task has no deadline' do 
+      it 'returns nil' do 
+        task = FactoryGirl.create(:task, deadline: nil)
+        expect(task.display_deadline).to eql nil
       end
     end
   end
