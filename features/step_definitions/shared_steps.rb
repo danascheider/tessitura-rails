@@ -43,3 +43,7 @@ end
 Then /^I should not be rerouted to my dashboard$/ do 
   expect(current_path).not_to match(/dashboard/)
 end
+
+Then /^I should still be on my tasks page$/ do 
+  expect(current_path).to eql user_tasks_path(@user)
+end

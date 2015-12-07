@@ -3,12 +3,28 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 #kanban_board {
+  box-sizing: border-box;
+
   ul {
     list-style: none;
     padding-left: 0;
+
+    li:not(:last-child) {
+      border-bottom: 1px solid #efefef;
+      padding-bottom: 1em;
+    }
+
+    li.task {
+      padding-top: 0;
+      margin-top: -10px;
+    }
+  }
+
+  .panel-body {
+    padding-bottom: 0.25em
   }
 
   h3.task-list-title {
-    font-size: 1.313em
+    font-size: 1.23em
   }
 }

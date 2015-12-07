@@ -14,18 +14,31 @@
         <div class='panel-heading'><i class='fa fa-tasks fa-fw'></i> Backlog</div>
         <div class='panel-body'>
           <ul>
-          <% backlog.each do |task| %>
-            <li class='task'>
-              <h3 class='task-list-title'><%= link_to task.title, task %></h3><br>
-              <% if task.display_deadline %>
-                <strong>Deadline:</strong> <%= task.display_deadline %><br>
-              <% end %>
-              <strong>Priority:</strong> <%= task.priority %><br>
-              <% unless task.notes.blank? %>
-                <strong>Notes:</strong> <%= task.notes %><br>
+            <li class='quick-add-form' data-status=''>
+              <%= form_for([@tasks.first.user, Task.new]) do |f| %>
+                <div class='input-group'>
+                  <%= f.label :title, class: 'sr-only' %>
+                  <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+                  <span class='input-group-btn'>
+                    <%= f.button class: 'btn btn-default', title: 'Create' do %>
+                      <i class='fa fa-plus fa-fw'></i>
+                    <% end %>
+                  </span>
+                </div>
               <% end %>
             </li>
-          <% end %>
+            <% backlog.each do |task| %>
+              <li class='task'>
+                <h3 class='task-list-title'><%= link_to task.title, task %></h3><br>
+                <% if task.display_deadline %>
+                  <strong>Deadline:</strong> <%= task.display_deadline %><br>
+                <% end %>
+                <strong>Priority:</strong> <%= task.priority %><br>
+                <% unless task.notes.blank? %>
+                  <strong>Notes:</strong> <%= task.notes %><br>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -35,19 +48,33 @@
         <div class='panel-heading'><i class='fa fa-road fa-fw'></i> In Progress</div>
         <div class='panel-body'>
           <ul>
-          <% in_progress.each do |task| %>
-            <li class='task'>
-              <h3 class='task-list-title'><%= link_to task.title, task %></h3>
-              <% if task.display_deadline %> 
-                <strong>Deadline:</strong> <%= task.display_deadline %><br>
-              <% end %>
-              <strong>Status:</strong> <%= task.status %><br>
-              <strong>Priority:</strong> <%= task.priority %><br>
-              <% unless task.notes.blank? %>
-                <strong>Notes:</strong> <%= task.notes %><br>
+            <li class='quick-add-form' data-status='In Progress'>
+              <%= form_for([@tasks.first.user, Task.new]) do |f| %>
+                <div class='input-group'>
+                  <%= f.label :title, class: 'sr-only' %>
+                  <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+                  <span class='input-group-btn'>
+                  <%= f.hidden_field :status, value: 'In Progress' %>
+                  <%= f.button class: 'btn btn-default', title: 'Create' do %>
+                    <i class='fa fa-plus fa-fw'></i>
+                  <% end %>
+                  </span>
+                </div>
               <% end %>
             </li>
-          <% end %>
+            <% in_progress.each do |task| %>
+              <li class='task'>
+                <h3 class='task-list-title'><%= link_to task.title, task %></h3>
+                <% if task.display_deadline %> 
+                  <strong>Deadline:</strong> <%= task.display_deadline %><br>
+                <% end %>
+                <strong>Status:</strong> <%= task.status %><br>
+                <strong>Priority:</strong> <%= task.priority %><br>
+                <% unless task.notes.blank? %>
+                  <strong>Notes:</strong> <%= task.notes %><br>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
@@ -57,25 +84,36 @@
         <div class='panel-heading'><i class='fa fa-minus-circle fa-fw'></i> Blocking</div>
         <div class='panel-body'>
           <ul>
-          <% blocking.each do |task| %>
-            <li class='task'>
-              <h3 class='task-list-title'><%= link_to task.title, task %></h3><br>
-              <% if task.display_deadline %>
-                <strong>Deadline:</strong> <%= task.display_deadline %><br>
-              <% end %>
-              <strong>Status:</strong> <%= task.status %><br>
-              <strong>Priority:</strong> <%= task.priority %><br>
-              <% unless task.notes.blank? %>
-                <strong>Notes:</strong> <%= task.notes %><br>
+            <li class='quick-add-form' data-status='Blocking'>
+              <%= form_for([@tasks.first.user, Task.new]) do |f| %>
+                <div class='input-group'>
+                  <%= f.label :title, class: 'sr-only' %>
+                  <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+                  <span class='input-group-btn'>
+                  <%= f.hidden_field(:status, value: 'Blocking') %>
+                    <%= f.button class: 'btn btn-default', title: 'Create' do %>
+                      <i class='fa fa-plus fa-fw'></i>
+                    <% end %>
+                  </span>
+                </div>
               <% end %>
             </li>
-          <% end %>
+            <% blocking.each do |task| %>
+              <li class='task'>
+                <h3 class='task-list-title'><%= link_to task.title, task %></h3><br>
+                <% if task.display_deadline %>
+                  <strong>Deadline:</strong> <%= task.display_deadline %><br>
+                <% end %>
+                <strong>Status:</strong> <%= task.status %><br>
+                <strong>Priority:</strong> <%= task.priority %><br>
+                <% unless task.notes.blank? %>
+                  <strong>Notes:</strong> <%= task.notes %><br>
+                <% end %>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
     </div>
-  </div>
-  <div class='row'>
-    <%= link_to 'New Task', new_user_task_path(current_user) %>
   </div>
 </div>
