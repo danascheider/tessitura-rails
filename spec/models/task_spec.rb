@@ -8,6 +8,7 @@ RSpec.describe Task, type: :model do
   it { is_expected.to respond_to :notes }
   it { is_expected.to respond_to :user_id }
   it { is_expected.to respond_to :display_deadline }
+  it { is_expected.to respond_to :short_title }
 
   describe 'validations' do 
     let(:task) { FactoryGirl.create(:task) }
@@ -66,6 +67,13 @@ RSpec.describe Task, type: :model do
         task = FactoryGirl.create(:task, deadline: nil)
         expect(task.display_deadline).to eql nil
       end
+    end
+  end
+
+  describe 'short_title' do 
+    it 'cuts off at the end of the nearest word' do 
+      task = FactoryGirl.create(:task, title: 'Find out how much wood a woodchuck would chuck if a woodchuck could chuck wood')
+      expect(task.short_title(60)).to eql 'Find out how much wood a woodchuck would chuck if a woodchuc'
     end
   end
 end

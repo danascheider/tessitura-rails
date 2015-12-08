@@ -20,6 +20,10 @@ class Task < ActiveRecord::Base
     "#{weekday}, #{month} #{day}, #{year}"
   end
 
+  def short_title chars
+    title[0..chars - 1]
+  end
+
   private
     def set_priority
       self.priority ||= 'Normal'
