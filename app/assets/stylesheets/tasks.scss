@@ -1,5 +1,7 @@
 $panel-red-color: #d9534f;
 $panel-green-color: #5db85b;
+$panel-blue-color: #418bca;
+$panel-yellow-color: #f0ad4e;
 
 #kanban_board, #task-panel {
   box-sizing: border-box;
@@ -48,16 +50,27 @@ $panel-green-color: #5db85b;
     }
   }
 
+  .panel-yellow ul {
+    i.fa-pencil:hover {
+      color: $panel-yellow-color
+    }
+  }
+
   .panel-body {
     padding-bottom: 0.25em
   }
 
   h3.task-list-title {
-    font-size: 1.1em;
-    font-weight: bold;
+    font-size: 1.2em;
 
     a {
       color: #333
     }
   }
 }
+
+  #task-panel ul {
+    i.fa-pencil:hover {
+      color: $panel-blue-color
+    }
+  }
