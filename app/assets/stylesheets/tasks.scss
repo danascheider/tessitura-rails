@@ -4,6 +4,11 @@ $panel-green-color: #5db85b;
 #kanban_board, #task-panel {
   box-sizing: border-box;
 
+  .panel-body {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
   ul {
     list-style: none;
     padding-left: 0;
@@ -29,8 +34,17 @@ $panel-green-color: #5db85b;
     }
 
     li.task {
-      padding-top: 0;
       margin-top: -10px;
+    }
+
+    li.task,
+    li.quick-add-form {
+      padding: 0 1em 1em 1em;
+    }
+
+    li.quick-add-form:last-child,
+    li.task:last-child {
+      padding-bottom: 0;
     }
   }
 
