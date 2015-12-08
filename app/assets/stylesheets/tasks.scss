@@ -5,15 +5,34 @@ $panel-yellow-color: #f0ad4e;
 
 #kanban_board, #task-panel {
   box-sizing: border-box;
+  padding-bottom: 0;
+
+  &.panel-primary i.fa-pencil:hover,
+  &.panel-blue i.fa-pencil:hover,
+  .panel-primary i.fa-pencil:hover,
+  .panel-blue i.fa-pencil:hover {
+    color: $panel-blue-color;
+  }
+
+  .panel-green i.fa-pencil:hover {
+    color: $panel-green-color;
+  }
+
+  .panel-yellow i.fa-pencil:hover {
+    color: $panel-yellow-color;
+  }
 
   .panel-body {
     padding-left: 0;
     padding-right: 0;
+    padding-bottom: 0;
+    padding-top: 0;
   }
 
   ul {
     list-style: none;
     padding-left: 0;
+    margin-bottom: 0;
 
     li {
       i.fa-times:hover {
@@ -28,49 +47,58 @@ $panel-yellow-color: #f0ad4e;
         padding-right: 0.75em;
         vertical-align: top;
       }
+
+      h3 {
+        margin-top: 0;
+        margin-bottom: 0.25em;
+      }
     }
 
     li:not(:last-child) {
       border-bottom: 1px solid #efefef;
-      padding-bottom: 1em;
-    }
-
-    li.task {
-      margin-top: -10px;
     }
 
     li.task,
     li.quick-add-form {
-      padding: 0 1em 1em 1em;
+      padding: 0.75em 1em;
     }
 
     li.quick-add-form:last-child,
     li.task:last-child {
-      padding-bottom: 0;
+      padding-bottom: 0.75em;
     }
-  }
 
-  .panel-yellow ul {
-    i.fa-pencil:hover {
-      color: $panel-yellow-color
+    li.task:hover {
+      background-color: #f9f9f9;
     }
-  }
-
-  .panel-body {
-    padding-bottom: 0.25em
   }
 
   h3.task-list-title {
     font-size: 1.2em;
 
     a {
-      color: #333
+      color: #333;
     }
   }
 }
 
-  #task-panel ul {
+#task-panel  {
+  ul {
     i.fa-pencil:hover {
-      color: $panel-blue-color
+      color: $panel-blue-color;
+    }
+
+    h3 {
+      margin-top: 0;
+      margin-bottom: 0.25em;
+    }
+
+    li.task {
+      padding-top: 0.75em;
+
+      &:hover {
+        background-color: #f9f9f9;
+      }
     }
   }
+}
