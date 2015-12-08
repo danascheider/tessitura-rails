@@ -6,7 +6,7 @@ class Task < ActiveRecord::Base
   validates :priority, inclusion: { in: ["Urgent", "High", "Normal", "Low", "Not Important"] }
 
   belongs_to :user
-  acts_as_list scope: :user
+  acts_as_list scope: :user, add_new_at: :top
 
   def display_deadline
     return nil if deadline.blank?
@@ -21,7 +21,12 @@ class Task < ActiveRecord::Base
   end
 
   def short_title chars
-    title[0..chars - 1]
+    return title if title.length <= chars
+    
+    ending = ' ...'
+    array = title[0..chars - (ending.length + 1)].split(' ')
+    array.pop
+    array.join(' ') + ending
   end
 
   private

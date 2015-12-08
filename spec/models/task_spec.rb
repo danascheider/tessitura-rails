@@ -73,7 +73,7 @@ RSpec.describe Task, type: :model do
   describe 'short_title' do 
     it 'cuts off at the end of the nearest word' do 
       task = FactoryGirl.create(:task, title: 'Find out how much wood a woodchuck would chuck if a woodchuck could chuck wood')
-      expect(task.short_title(60)).to eql 'Find out how much wood a woodchuck would chuck if a woodchuc'
+      expect(task.short_title(60)).to eql 'Find out how much wood a woodchuck would chuck if a ...'
     end
   end
 end
