@@ -14,6 +14,11 @@ toggleSidebar = ->
     showSidebar()
 
 ready = ->
+
+  $('#dashboard-top-widgets .dash-widget').click (e) ->
+    e.preventDefault()
+    target = $(@).attr('data-target')
+    location.href = target;
   
   # Expand side menu when the user clicks the menu icon
 
