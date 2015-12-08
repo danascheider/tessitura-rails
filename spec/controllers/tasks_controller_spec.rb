@@ -75,10 +75,10 @@ RSpec.describe TasksController, type: :controller do
         expect(assigns(:task)).to be_persisted
       end
 
-      it "redirects to the created task" do
+      it "redirects to the task index" do
         sign_in user = FactoryGirl.create(:user)
         post :create, {:user_id => user.id, :task => valid_attributes}, valid_session
-        expect(response).to redirect_to(Task.last)
+        expect(response).to redirect_to(user_tasks_path(user))
       end
     end
 
@@ -118,11 +118,11 @@ RSpec.describe TasksController, type: :controller do
         expect(assigns(:task)).to eq(task)
       end
 
-      it "redirects to the task" do
+      it "redirects to the index" do
         task = FactoryGirl.create(:task)
         sign_in task.user
         put :update, {:id => task.to_param, :user_id => task.user.to_param, :task => valid_attributes}, valid_session
-        expect(response).to redirect_to(task)
+        expect(response).to redirect_to(user_tasks_path(task.user))
       end
     end
 

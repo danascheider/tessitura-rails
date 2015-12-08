@@ -21,14 +21,32 @@ When /^I visit the other user's tasks page$/ do
   visit "/users/#{other_uid}/tasks"
 end
 
+When(/^I click the '([^']*)' icon for my 'In Progress' task$/) do |icon|
+  within '#in_progress_tasks' do 
+    within '.task' do 
+      click_link icon
+    end
+  end
+end
+
 Then /^I should see (\d+) tasks? in the '([^' ]*)' column$/ do |count, column|
   within column do 
     expect(page).to have_selector '.task', count: count.to_i
   end
 end
 
+Then /^I should not see any tasks in the 'In Progress' column$/ do
+  within '#in_progress_tasks' do 
+    expect(page).not_to have_selector '.task'
+  end
+end
+
 Then /^there should be (\d+) tasks?$/ do |count|
   expect(Task.count).to eql count.to_i
+end
+
+Then /^there should be (\d+) complete tasks?$/ do |count|
+  expect(Task.where(status: 'Complete').count).to eql count.to_i
 end
 
 Then /^the status of the new task should be '([^']*)'$/ do |status|

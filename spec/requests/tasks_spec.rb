@@ -41,10 +41,10 @@ RSpec.describe "Tasks", type: :request do
         expect(response).to have_http_status(302)
       end
 
-      it "redirects to the created task" do 
+      it "redirects to the user's task index" do 
         login_as(user, scope: :user, run_callbacks: false)
         post user_tasks_path(user), {user_id: user.id, task: valid_attributes}
-        expect(response).to redirect_to Task.last
+        expect(response).to redirect_to user_tasks_path(user)
       end
     end
 

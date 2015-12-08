@@ -29,14 +29,27 @@
             </li>
             <% backlog.each do |task| %>
               <li class='task'>
-                <h3 class='task-list-title'><%= link_to task.title, task %></h3><br>
-                <% if task.display_deadline %>
-                  <strong>Deadline:</strong> <%= task.display_deadline %><br>
-                <% end %>
-                <strong>Priority:</strong> <%= task.priority %><br>
-                <% unless task.notes.blank? %>
-                  <strong>Notes:</strong> <%= task.notes %><br>
-                <% end %>
+                <span class='pull-right edit-task'>
+                  <%= link_to raw("<i class='fa fa-times fa-fw'></i>"), task_path(task), method: :delete, title: 'Delete' %>
+                  <%= link_to raw("<i class='fa fa-check fa-fw'></i>"), task_path(task, task: {:status => 'Complete'}), method: :patch, title: 'Mark Complete' %>
+                </span>
+                <h3 class='task-list-title'><%= link_to task.title, task %></h3>
+                <table>
+                  <% if task.display_deadline %>
+                    <tr>
+                      <th>Deadline:</th>
+                      <td><%= task.display_deadline %></td>
+                    </tr>
+                  <% end %>
+                  <tr>
+                    <th>Priority:</th><td><%= task.priority %></td>
+                  </tr>
+                  <% unless task.notes.blank? %>
+                    <tr>
+                      <th>Notes:</th><td><%= task.notes %></td>
+                    </tr>
+                  <% end %>
+                </table>
               </li>
             <% end %>
           </ul>
@@ -64,16 +77,30 @@
             </li>
             <% in_progress.each do |task| %>
               <li class='task'>
+                <span class='pull-right edit_task'>
+                  <%= link_to raw("<i class='fa fa-times fa-fw'></i>"), task_path(task), method: :delete, title: 'Delete' %>
+                  <%= link_to raw("<i class='fa fa-check fa-fw'></i>"), task_path(task, task: {:status => 'Complete'}), method: :patch, title: 'Mark Complete' %>
+                </span>
                 <h3 class='task-list-title'><%= link_to task.title, task %></h3>
-                <% if task.display_deadline %> 
-                  <strong>Deadline:</strong> <%= task.display_deadline %><br>
-                <% end %>
-                <strong>Status:</strong> <%= task.status %><br>
-                <strong>Priority:</strong> <%= task.priority %><br>
-                <% unless task.notes.blank? %>
-                  <strong>Notes:</strong> <%= task.notes %><br>
-                <% end %>
-              </li>
+                <table>
+                  <% if task.display_deadline %>
+                    <tr>
+                      <th>Deadline:</th>
+                      <td><%= task.display_deadline %></td>
+                    </tr>
+                  <% end %>
+                  <tr>
+                    <th>Status:</th><td><%= task.status %></td>
+                  </tr>
+                  <tr>
+                    <th>Priority:</th><td><%= task.priority %></td>
+                  </tr>
+                  <% unless task.notes.blank? %>
+                    <tr>
+                      <th>Notes:</th><td><%= task.notes %></td>
+                    </tr>
+                  <% end %>
+                </table>              </li>
             <% end %>
           </ul>
         </div>
@@ -100,15 +127,30 @@
             </li>
             <% blocking.each do |task| %>
               <li class='task'>
-                <h3 class='task-list-title'><%= link_to task.title, task %></h3><br>
-                <% if task.display_deadline %>
-                  <strong>Deadline:</strong> <%= task.display_deadline %><br>
-                <% end %>
-                <strong>Status:</strong> <%= task.status %><br>
-                <strong>Priority:</strong> <%= task.priority %><br>
-                <% unless task.notes.blank? %>
-                  <strong>Notes:</strong> <%= task.notes %><br>
-                <% end %>
+                <span class='pull-right edit_task'>
+                  <%= link_to raw("<i class='fa fa-times fa-fw'></i>"), task_path(task), method: :delete, title: 'Delete' %>
+                  <%= link_to raw("<i class='fa fa-check fa-fw'></i>"), task_path(task, task: {:status => 'Complete'}), method: :patch, title: 'Mark Complete' %>
+                </span>
+                <h3 class='task-list-title'><%= link_to task.title, task %></h3>
+                <table>
+                  <% if task.display_deadline %>
+                    <tr>
+                      <th>Deadline:</th>
+                      <td><%= task.display_deadline %></td>
+                    </tr>
+                  <% end %>
+                  <tr>
+                    <th>Status:</th><td><%= task.status %></td>
+                  </tr>
+                  <tr>
+                    <th>Priority:</th><td><%= task.priority %></td>
+                  </tr>
+                  <% unless task.notes.blank? %>
+                    <tr>
+                      <th>Notes:</th><td><%= task.notes %></td>
+                    </tr>
+                  <% end %>
+                </table>
               </li>
             <% end %>
           </ul>
