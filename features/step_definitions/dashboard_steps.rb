@@ -7,3 +7,9 @@ Then /^the 'tasks' widget should say I have (\d+) incomplete tasks$/ do |count|
     expect(find('.huge')).to have_content(count)
   end
 end
+
+Then /^the '([^']*)' element should display (\d+) tasks$/ do |el, count|
+  within el do 
+    expect(page).to have_selector('.task', count: count.to_i)
+  end
+end
