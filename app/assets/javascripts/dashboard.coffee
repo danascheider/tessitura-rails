@@ -13,7 +13,7 @@ toggleSidebar = ->
   else
     showSidebar()
 
-$(document).ready ->
+ready = ->
   
   # Expand side menu when the user clicks the menu icon
 
@@ -38,3 +38,7 @@ $(document).ready ->
     li = $(e.target).closest('.dropdown')
     li.siblings().find('ul.dropdown-menu').hide()
     li.find('ul.dropdown-menu').toggle()
+
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
