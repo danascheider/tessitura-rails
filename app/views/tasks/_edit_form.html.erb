@@ -11,31 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :deadline %><br>
-    <%= f.datetime_select :deadline %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="field">
-    <%= f.label :priority %><br>
-    <%= f.text_field :priority %>
-  </div>
-  <div class="field">
+  <div class='form-group'>
+    <div class="field">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :deadline %><br>
+      <%= f.datetime_select :deadline, class: 'form-control' %>
+    </div>
+    <div class="field">
+      <%= f.label :status %><br>
+      <%= f.select(:status, ['In Progress', 'Blocking', 'Complete'], :include_blank => true) %>
+    </div>
+    <div class="field">
+      <%= f.label :priority %><br>
+      <%= f.select(:priority, ['Urgent', 'High', 'Normal', 'Low', 'Not Important'], :selected => 'Normal') %>
+    </div>
+    <div class="field">
     <%= f.label :notes %><br>
-    <%= f.text_field :notes %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.number_field :position %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+    <%= f.text_field :notes, class: 'form-control' %>
+    </div>
+    <div class="actions">
+      <%= f.submit class: 'btn btn-block btn-lg' %>
+    </div>
   </div>
 <% end %>
