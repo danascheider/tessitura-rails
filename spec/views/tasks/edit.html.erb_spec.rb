@@ -28,13 +28,11 @@ RSpec.describe "tasks/edit", type: :view do
 
       assert_select "input#task_title[name=?]", "task[title]"
 
-      assert_select "input#task_status[name=?]", "task[status]"
+      assert_select "select#task_status[name=?]", "task[status]"
 
-      assert_select "input#task_priority[name=?]", "task[priority]"
+      assert_select "select#task_priority[name=?]", "task[priority]"
 
       assert_select "input#task_notes[name=?]", "task[notes]"
-
-      assert_select "input#task_position[name=?]", "task[position]"
     end
   end
 end
