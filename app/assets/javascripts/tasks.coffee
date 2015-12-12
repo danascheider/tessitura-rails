@@ -1,4 +1,6 @@
 $(document).ready ->
+  $(@).tooltip()
+
   $('#task-panel > .panel-body > .ui-sortable').sortable({
     items: "li:not(.not-sortable)",
     stop : (event, ui) ->
