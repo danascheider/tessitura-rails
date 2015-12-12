@@ -50,6 +50,10 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    if params[:position]
+      @task.set_list_position(params.delete(:position))
+    end
+
     respond_to do |format|
       if @task.update(task_params)
         format.html { redirect_to user_tasks_path(@task.user) }

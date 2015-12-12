@@ -155,7 +155,7 @@
           <% tasks_to_display = incomplete_tasks.reject {|t| t.status == 'Blocking' } %>
 
           <% tasks_to_display[0..9].each do |task| %>
-            <li class='task'>
+            <li id="task_<%= task.id %>" class='task'>
               <span class='pull-right edit_task'>
                 <%= link_to raw("<i class='fa fa-times fa-fw'></i>"), task_path(task), method: :delete, title: 'Delete' %>
                 <%= link_to raw("<i class='fa fa-pencil fa-fw'></i>"), edit_task_path(task), title: 'Edit Task' %>
