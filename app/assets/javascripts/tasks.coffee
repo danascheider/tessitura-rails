@@ -22,3 +22,23 @@ $(document).ready ->
         }
         )
     })
+
+  $('#backlog_tasks ul, #in_progress_tasks ul, #blocking_tasks ul').sortable({
+    connectWith: '.kanban-col ul',
+    items      : "li:not(.quick-add-form)",
+    placeholder: "ui-state-highlight",
+    stop       : (event, ui) ->
+      task_id = ui.item.attr('id').match(/\d+/)[0]
+      item    = ui.item.closest('.kanban-col')
+      status  = item.attr('data-status')
+
+      $.ajax(
+        url   : "/tasks/#{task_id}.json",
+        type  : 'PATCH',
+        data  : {
+          task: {
+            status: status
+          }
+        }
+        )
+    })
