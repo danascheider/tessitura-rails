@@ -13,29 +13,25 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :deadline %><br>
-    <%= f.datetime_select :deadline %>
+    <%= f.text_field :deadline, class: 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.select(:status, ['In Progress', 'Blocking', 'Complete'], :include_blank => true) %>
+    <%= f.select(:status, ['In Progress', 'Blocking', 'Complete'], {:include_blank => true}, class: 'form-control') %>
   </div>
   <div class="field">
     <%= f.label :priority %><br>
-    <%= f.select(:priority, ['Urgent', 'High', 'Normal', 'Low', 'Not Important'], :selected => 'Normal') %>
+    <%= f.select(:priority, ['Urgent', 'High', 'Normal', 'Low', 'Not Important'], {:selected => 'Normal'}, class: 'form-control') %>
   </div>
   <div class="field">
     <%= f.label :notes %><br>
-    <%= f.text_field :notes %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.number_field :position %>
+    <%= f.text_area :notes, class: 'form-control', rows: 3 %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-block btn-primary btn-lg' %>
   </div>
 <% end %>
