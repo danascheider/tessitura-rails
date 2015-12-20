@@ -1,3 +1,7 @@
+Given /^I am on my dashboard$/ do 
+  step "I visit my dashboard"
+end
+
 When /^I visit my dashboard$/ do 
   visit dashboard_user_path(@user)
 end

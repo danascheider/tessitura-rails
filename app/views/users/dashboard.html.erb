@@ -139,7 +139,7 @@
       <div class='panel-body'>
         <ul class='task-list ui-sortable'>
           <li class='quick-add-form not-sortable'>
-            <%= form_for([@user, Task.new]) do |f| %>
+            <%= form_for([@user, Task.new], :url => user_tasks_path(@user, format: :json), remote: true) do |f| %>
               <div class='input-group'>
                 <%= f.label :title, class: 'sr-only' %>
                 <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>

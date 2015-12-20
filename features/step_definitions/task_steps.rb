@@ -24,6 +24,19 @@ When(/^I create a task called '([^']*)' using the quick\-add form in the '([^']*
   end
 end
 
+When /^I submit the quick-add form in the '([^']*)' element$/ do |el|
+  within el do 
+    within '#new_task' do 
+      fill_in "Title", with: "Create a new task"
+      click_button "Create"
+    end
+  end
+
+  # Wait for Ajax request to complete before moving on to
+  # the next step
+  page.find_link 'Create a new task' 
+end
+
 When /^I visit the other user's tasks page$/ do 
   other_uid = User.where.not(:id => @user.id).first.id
   visit "/users/#{other_uid}/tasks"
@@ -47,6 +60,10 @@ Then /^I should not see any tasks in the 'In Progress' column$/ do
   within '#in_progress_tasks' do 
     expect(page).not_to have_selector '.task'
   end
+end
+
+Then /^I should have (\d+) tasks$/ do |count|
+  expect(@user.tasks.size).to eql count.to_i
 end
 
 Then /^there should be (\d+) tasks?$/ do |count|

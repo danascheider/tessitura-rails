@@ -22,3 +22,10 @@ Feature: User dashboard
     Given I have a shitload of incomplete tasks
     When I visit my dashboard
     Then the '#task-panel' element should display 10 tasks
+
+  @javascript
+  Scenario: Add task from the quick-add form
+    Given I am on my dashboard
+    When I submit the quick-add form in the '#task-panel' element
+    Then I should have 4 tasks
+    And the '#task-panel' element should display 4 tasks
