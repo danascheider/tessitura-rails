@@ -157,7 +157,9 @@
           <% tasks_to_display[0..9].each do |task| %>
             <li id="task_<%= task.id %>" class='task'>
               <span class='pull-right edit_task'>
-                <%= link_to raw("<i class='fa fa-times fa-fw'></i>"), task_path(task), method: :delete, title: 'Delete' %>
+                <a href='/tasks/<%= task.id %>' title='Delete' onclick='return false'>
+                  <i class='fa fa-times fa-fw'></i>
+                </a>
                 <%= link_to raw("<i class='fa fa-pencil fa-fw'></i>"), edit_task_path(task), title: 'Edit Task' %>
                 <a href='/tasks/<%= task.id %>' title='Mark Complete' onclick='return false'>
                   <i class='fa fa-check fa-fw'></i>

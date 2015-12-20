@@ -27,7 +27,15 @@ Feature: User dashboard
   Scenario: Mark task complete from the task panel
     When I click the 'Mark Complete' icon for the first task
     Then the '#task-panel' element should display 2 tasks
+    And the 'tasks' widget should say I have 2 incomplete tasks
     And I should have 1 complete task
+
+  @javascript
+  Scenario: Delete task from the task panel
+    When I click the 'Delete' icon for the first task
+    Then the '#task-panel' element should display 2 tasks
+    And the 'tasks' widget should say I have 2 incomplete tasks
+    And I should have 2 tasks
 
   @javascript
   Scenario: Add task from the quick-add form

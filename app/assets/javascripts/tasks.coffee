@@ -27,12 +27,24 @@ taskLi = (task) ->
 taskID = (element) ->
   return $(element).attr('id').match(/\d+/)[0]
 
+removeIncompleteTask = (li) ->
+  $(li).fadeOut()
+
+  if $('#top_task_widget').length
+    element = $('#top_task_widget').find('.huge')
+    number = element.html()
+    element.html(number - 1)
+
 $(document).ready ->
   $(@).tooltip()
 
-  $('.task a[title="Mark Complete"]').click( (e) ->
+  # Listen for a click on the mark-complete icon
+  $('.task a[title="Mark Complete"]').click( ->
     li = $(@).closest('li')
     
+    # When a user clicks on the 'Mark Complete' icon, send an Ajax request
+    # updating the status of the selected task to 'Complete'
+
     $.ajax(
       url: "/tasks/#{taskID(li)}.json",
       type: 'PATCH',
@@ -41,13 +53,26 @@ $(document).ready ->
           status: 'Complete'
         }
       },
-      success : ->
-        $(li).fadeOut()
 
-        if $('#top_task_widget').length
-          element = $('#top_task_widget').find('.huge')
-          number = element.html()
-          element.html(number - 1)
+      # When the task has been successfully marked complete, remove it from the
+      # list and update the top task widget if on the main dashboard page
+
+      success : ->
+        removeIncompleteTask(li)
+      )
+    )
+
+  $('.task a[title=Delete]').click( ->
+    li = $(@).closest('li')
+
+    # When a user clicks on the 'Delete' icon, send an Ajax request deleting
+    # the selected task
+
+    $.ajax(
+      url: "/tasks/#{taskID(li)}.json",
+      type: 'DELETE',
+      success: ->
+        removeIncompleteTask(li)
       )
     )
 
