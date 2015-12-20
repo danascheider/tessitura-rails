@@ -36,7 +36,9 @@ removeIncompleteTask = (li) ->
     element.html(number - 1)
 
 $(document).ready ->
+  # jQuery UI elements
   $(@).tooltip()
+  $("#task_deadline").datepicker()
 
   # Listen for a click on the mark-complete icon
   $('.task a[title="Mark Complete"]').click( ->
