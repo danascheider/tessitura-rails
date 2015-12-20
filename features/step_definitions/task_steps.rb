@@ -50,6 +50,16 @@ When(/^I click the '([^']*)' icon for my 'In Progress' task$/) do |icon|
   end
 end
 
+When(/^I click the '([^']*)' icon for the first task$/) do |icon|
+  within '#task-panel' do 
+    within '.task', :match => :first do 
+      click_link icon
+    end
+  end
+
+  sleep 2
+end
+
 Then /^I should see (\d+) tasks? in the '([^' ]*)' column$/ do |count, column|
   within column do 
     expect(page).to have_selector '.task', count: count.to_i
@@ -68,6 +78,10 @@ end
 
 Then /^there should be (\d+) tasks?$/ do |count|
   expect(Task.count).to eql count.to_i
+end
+
+Then /^I should have (\d+) complete tasks?$/ do |count|
+  expect(Task.where(id: @user.id, status: 'Complete').count).to eql count.to_i
 end
 
 Then /^there should be (\d+) complete tasks?$/ do |count|

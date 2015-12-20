@@ -24,8 +24,30 @@ taskLi = (task) ->
         </table>
       </li>"
 
+taskID = (element) ->
+  return $(element).attr('id').match(/\d+/)[0]
+
 $(document).ready ->
   $(@).tooltip()
+
+  $('#task-panel .task a[title="Mark Complete"]').click( (e) ->
+    li = $(@).closest('li')
+    
+    $.ajax(
+      url: "/tasks/#{taskID(li)}.json",
+      type: 'PATCH',
+      data : {
+        task: {
+          status: 'Complete'
+        }
+      },
+      success : ->
+        $(li).hide()
+        element = $('#top_task_widget').find('.huge')
+        number = element.html()
+        element.html(number - 1)
+      )
+    )
 
   $('#task-panel .quick-add-form > form').on('ajax:success', (e, task) ->
     @.reset()
@@ -33,18 +55,29 @@ $(document).ready ->
     $(@).closest('li').after(taskLi(task))
     )
 
+  # Make task panel sortable, other than the quick-add form
   $('#task-panel > .panel-body > .ui-sortable').sortable({
     items: "li:not(.not-sortable)",
+
+    # When a task li is dropped in the task panel, update its position
+    # to reflect where the user has placed it
+
     stop : (event, ui) ->
-      task_id  = ui.item.attr('id').match(/\d+/)[0]
-      prev_id  = ui.item.prev().attr('id').match(/\d+/)[0]
+      task_id  = taskID(ui.item)
+      prev_id  = taskID(ui.item.prev())
       position = null
+
+      # Get the position of the task before the one the user dropped
+      # (i.e., immediately before it vis-à-vis its new position)
 
       $.ajax(
         url    : "/tasks/#{prev_id}.json",
         success: (task) ->
           position = task['position'] + 1
         )
+
+      # Update the dropped task so that it is placed immediately after
+      # the task displayed above it in its new position
 
       $.ajax(
         url     : "/tasks/#{task_id}.json",
@@ -57,17 +90,22 @@ $(document).ready ->
         )
     })
 
+  # Active sortable functionality on kanban columns
+
   $('#backlog_tasks ul, #in_progress_tasks ul, #blocking_tasks ul').sortable({
     connectWith: '.kanban-col ul',
     items      : "li:not(.quick-add-form)",
     placeholder: "ui-state-highlight",
+
+    # When a task is moved from one kanban column to another, its status is
+    # updated to match the status associated with the list it was dropped on.
+
     stop       : (event, ui) ->
-      task_id = ui.item.attr('id').match(/\d+/)[0]
       item    = ui.item.closest('.kanban-col')
       status  = item.attr('data-status')
 
       $.ajax(
-        url   : "/tasks/#{task_id}.json",
+        url   : "/tasks/#{taskID(ui.item)}.json",
         type  : 'PATCH',
         data  : {
           task: {

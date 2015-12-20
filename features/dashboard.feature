@@ -24,6 +24,12 @@ Feature: User dashboard
     Then the '#task-panel' element should display 10 tasks
 
   @javascript
+  Scenario: Mark task complete from the task panel
+    When I click the 'Mark Complete' icon for the first task
+    Then the '#task-panel' element should display 2 tasks
+    And I should have 1 complete task
+
+  @javascript
   Scenario: Add task from the quick-add form
     Given I am on my dashboard
     When I submit the quick-add form in the '#task-panel' element
