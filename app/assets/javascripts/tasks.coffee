@@ -1,8 +1,5 @@
-$(document).ready ->
-  $(@).tooltip()
-
-  $('#task-panel .quick-add-form > form').on('ajax:success', (e, task) ->
-    html = "<li id='task_#{task.id}' class='task ui-sortable-handle ui-sortable-helper'>
+taskLi = (task) ->
+  return "<li id='task_#{task.id}' class='task ui-sortable-handle ui-sortable-helper'>
         <span class='pull-right edit-task'>
           <a title='Delete' rel='nofollow' data-method='delete' href='/tasks/#{task.id}'>
             <i class='fa fa-times fa-fw'></i>
@@ -27,9 +24,13 @@ $(document).ready ->
         </table>
       </li>"
 
+$(document).ready ->
+  $(@).tooltip()
+
+  $('#task-panel .quick-add-form > form').on('ajax:success', (e, task) ->
     @.reset()
     $(@).blur()
-    $(@).closest('li').after(html)
+    $(@).closest('li').after(taskLi(task))
     )
 
   $('#task-panel > .panel-body > .ui-sortable').sortable({
