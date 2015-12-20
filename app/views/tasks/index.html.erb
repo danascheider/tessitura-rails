@@ -32,7 +32,9 @@
                 <span class='pull-right edit-task'>
                   <%= link_to raw("<i class='fa fa-times fa-fw'></i>"), task_path(task), method: :delete, title: 'Delete' %>
                   <%= link_to raw("<i class='fa fa-pencil fa-fw'></i>"), edit_task_path(task) %>
-                  <%= link_to raw("<i class='fa fa-check fa-fw'></i>"), task_path(task, task: {:status => 'Complete'}), method: :patch, title: 'Mark Complete' %>
+                  <a href='/tasks/<%= task.id %>' title='Mark Complete' onclick='return false'>
+                    <i class='fa fa-check fa-fw'></i>
+                  </a>
                 </span>
                 <h3 class='task-list-title'><%= link_to task.short_title(35), task, title: task.title %></h3>
                 <table>
@@ -80,7 +82,9 @@
               <li id='task-<%= task.id %>' class='task'>
                 <span class='pull-right edit_task'>
                   <%= link_to raw("<i class='fa fa-times fa-fw'></i>"), task_path(task), method: :delete, title: 'Delete' %>
-                  <%= link_to raw("<i class='fa fa-check fa-fw'></i>"), task_path(task, task: {:status => 'Complete'}), method: :patch, title: 'Mark Complete' %>
+                  <a href='/tasks/<%= task.id %>' title='Mark Complete' onclick='return false'>
+                    <i class='fa fa-check fa-fw'></i>
+                  </a>
                 </span>
                 <h3 class='task-list-title'><%= link_to task.short_title(35), task, title: task.title %></h3>
                 <table>
@@ -131,7 +135,9 @@
               <li id='task-<%= task.id %>' class='task'>
                 <span class='pull-right edit_task'>
                   <%= link_to raw("<i class='fa fa-times fa-fw'></i>"), task_path(task), method: :delete, title: 'Delete' %>
-                  <%= link_to raw("<i class='fa fa-check fa-fw'></i>"), task_path(task, task: {:status => 'Complete'}), method: :patch, title: 'Mark Complete' %>
+                  <a href='/tasks/<%= task.id %>' title='Mark Complete' onclick='return false'>
+                    <i class='fa fa-check fa-fw'></i>
+                  </a>
                 </span>
                 <h3 class='task-list-title'><%= link_to task.short_title(35), task, title: task.title %></h3>
                 <table>

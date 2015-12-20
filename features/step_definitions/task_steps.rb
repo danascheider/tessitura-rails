@@ -48,6 +48,8 @@ When(/^I click the '([^']*)' icon for my 'In Progress' task$/) do |icon|
       click_link icon
     end
   end
+
+  sleep 1
 end
 
 When(/^I click the '([^']*)' icon for the first task$/) do |icon|
@@ -57,7 +59,7 @@ When(/^I click the '([^']*)' icon for the first task$/) do |icon|
     end
   end
 
-  sleep 2
+  sleep 1
 end
 
 Then /^I should see (\d+) tasks? in the '([^' ]*)' column$/ do |count, column|
@@ -81,7 +83,7 @@ Then /^there should be (\d+) tasks?$/ do |count|
 end
 
 Then /^I should have (\d+) complete tasks?$/ do |count|
-  expect(Task.where(id: @user.id, status: 'Complete').count).to eql count.to_i
+  expect(Task.where(user_id: @user.id, status: 'Complete').count).to eql count.to_i
 end
 
 Then /^there should be (\d+) complete tasks?$/ do |count|

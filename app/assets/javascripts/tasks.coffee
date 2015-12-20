@@ -30,7 +30,7 @@ taskID = (element) ->
 $(document).ready ->
   $(@).tooltip()
 
-  $('#task-panel .task a[title="Mark Complete"]').click( (e) ->
+  $('.task a[title="Mark Complete"]').click( (e) ->
     li = $(@).closest('li')
     
     $.ajax(
@@ -42,10 +42,12 @@ $(document).ready ->
         }
       },
       success : ->
-        $(li).hide()
-        element = $('#top_task_widget').find('.huge')
-        number = element.html()
-        element.html(number - 1)
+        $(li).fadeOut()
+
+        if $('#top_task_widget').length
+          element = $('#top_task_widget').find('.huge')
+          number = element.html()
+          element.html(number - 1)
       )
     )
 
