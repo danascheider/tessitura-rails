@@ -23,6 +23,7 @@ Feature: Task page
     Then there should be 3 tasks
     And I should not see any tasks in the 'In Progress' column
 
+  @javascript
   Scenario: Mark task complete
     When I click the 'Mark Complete' icon for my 'In Progress' task
     Then there should be 2 complete tasks
