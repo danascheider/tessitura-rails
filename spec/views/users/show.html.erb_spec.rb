@@ -1,5 +1,9 @@
 require 'rails_helper'
 
+class NilClass
+  def empty?; true; end
+end
+
 RSpec.describe "users/show", type: :view do
   before(:each) do
     @user = assign(:user, FactoryGirl.create(:user))
