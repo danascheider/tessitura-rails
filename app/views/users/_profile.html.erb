@@ -1,0 +1,179 @@
+<table>
+  <tr data-attribute='name'>
+    <th>Name:</th>
+    <td title='Double-click to edit'>
+      <span class='profile-field' id='first_name'>
+        <span class='p'><%= @user.first_name %></span>
+        <span class='form'>
+          <%= form_for @user do |f| %>
+            <%= f.label :first_name, class: 'sr-only' %>
+            <span class='input-group'>
+              <%= f.text_field :first_name, value: @user.first_name, class: 'form-control' %>
+              <span class='input-group-btn'>
+                <%= f.button class: 'btn btn-default', title: 'Update'  do %>
+                  <i class='fa fa-pencil fa-fw'></i>
+                <% end %>
+              </span>
+            </span>
+          <% end %>
+        </span>
+      </span> 
+      <span class='profile-field' id='last_name'>
+        <span class='p'><%= @user.last_name %></span>
+        <span class='form'>
+          <%= form_for @user do |f| %>
+            <%= f.label :last_name, class: 'sr-only' %>
+            <span class='input-group'>
+              <%= f.text_field :last_name, value: @user.last_name, class: 'form-control' %>
+              <span class='input-group-btn'>
+                <%= f.button class: 'btn btn-default', title: 'Update'  do %>
+                  <i class='fa fa-pencil fa-fw'></i>
+                <% end %>
+              </span>
+            </span>
+          <% end %>
+        </span>
+      </span>
+    </td>
+  </tr>
+
+  <tr data-attribute='email'>
+    <th>E-mail:</th>
+    <td>
+      <span class='profile-field' id='email' title='Double-click to edit'>
+        <span class='p'><%= @user.email %></span>
+        <span class='form'>
+          <%= form_for @user do |f| %>
+            <%= f.label :email, class: 'sr-only' %>
+            <span class='input-group'>
+              <%= f.text_field :email, value: @user.email, class: 'form-control' %>
+              <span class='input-group-btn'>
+                <%= f.button class: 'btn btn-default', title: 'Update'  do %>
+                  <i class='fa fa-pencil fa-fw'></i>
+                <% end %>
+              </span>
+            </span>
+          <% end %>
+        </span>
+      </span>
+    </td>
+  </tr>
+
+  <tr data-attribute='birthdate'>
+    <th>Birthdate:</th>
+    <td title='Double-click to edit'>
+      <span class='profile-field' id='birthdate'>
+        <span class='p'><%= @user.birthdate || 'N/A' %></span>
+        <span class='form'>
+          <%= form_for @user do |f| %>
+            <%= f.label :birthdate, class: 'sr-only' %>
+            <span class='input-group'>
+              <%= f.text_field :birthdate, value: @user.birthdate, class: 'form-control' %>
+              <span class='input-group-btn'>
+                <%= f.button class: 'btn btn-default', title: 'Update'  do %>
+                  <i class='fa fa-pencil fa-fw'></i>
+                <% end %>
+              </span>
+            </span>
+          <% end %>
+        </span>      
+      </span>
+    </td>
+  </tr>
+
+  <tr data-attribute='address_1'>
+    <th>Address 1:</th>
+    <td title='Double-click to edit'>
+      <span class='profile-field' id='address_1'>
+        <span class='p'><%= @user.address_1.empty? ? 'N/A' : @user.address_1 %></span>
+        <span class='form'>
+          <%= form_for @user do |f| %>
+            <%= f.label :address_1, class: 'sr-only' %>
+            <span class='input-group'>
+              <%= f.text_field :address_1, value: @user.address_1, class: 'form-control' %>
+              <span class='input-group-btn'>
+                <%= f.button class: 'btn btn-default', title: 'Update'  do %>
+                  <i class='fa fa-pencil fa-fw'></i>
+                <% end %>
+              </span>
+            </span>
+          <% end %>
+        </span>
+      </span>
+    </td>
+  </tr>
+
+  <tr data-attribute='address_2'>
+    <th>Address 2:</th>
+    <td title='Double-click to edit'>
+      <span class='profile-field' id='address_2'>
+        <span class='p'><%= @user.address_2.empty? ? 'N/A' : @user.address_2 %></span>
+        <span class='form'>
+          <%= form_for @user do |f| %>
+            <%= f.label :address_1, class: 'sr-only' %>
+            <span class='input-group'>
+              <%= f.text_field :address_2, value: @user.address_2, class: 'form-control' %>
+              <span class='input-group-btn'>
+                <%= f.button class: 'btn btn-default', title: 'Update'  do %>
+                  <i class='fa fa-pencil fa-fw'></i>
+                <% end %>
+              </span>
+            </span>
+          <% end %>
+        </span>
+      </span>
+    </td>
+  </tr>
+
+  <tr data-attribute='city'>
+    <th>City:</th>
+    <td title='Double-click to edit'>
+      <span class='profile-field' id='city'>
+        <span class='p'><%= @user.city.empty? ? 'N/A' : @user.city %></span>
+        <span class='form'>
+          <%= form_for @user do |f| %>
+            <%= f.label :city, class: 'sr-only' %>
+            <span class='input-group'>
+              <%= f.text_field :city, value: @user.city, class: 'form-control' %>
+              <span class='input-group-btn'>
+                <%= f.button class: 'btn btn-default', title: 'Update'  do %>
+                  <i class='fa fa-pencil fa-fw'></i>
+                <% end %>
+              </span>
+            </span>
+          <% end %>
+        </span>      </span>
+    </td>  
+  </tr>
+  <tr data-attribute='state'>
+    <th>State:</th>
+    <td title='Double-click to edit'>
+      <span class='profile-field' id='state'>
+        <span class='p'><%= @user.state.empty? ? 'N/A' : @user.state %></span>
+        <span class='form'>
+          <%= form_for @user do |f| %>
+            <%= f.select :state, options_for_select(us_states), {include_blank: true, selected: @user.state}, class: 'form-control' %>
+          <% end %>
+        </span>
+      </span>
+    </td>
+  </tr>
+
+  <tr data-attribute='zip'>
+    <th>Zip:</th>
+    <td title='Double-click to edit'>
+      <span class='profile-field' id='zip'>
+        <span class='p'><%= @user.zip.empty? ? 'N/A' : @user.zip %></span>
+        <span class='form'>
+          <%= form_for @user do |f| %>
+            <%= f.text_field :zip, value: @user.zip, class: 'form-control' %>
+          <% end %>
+        </span>
+      </span>
+    </td>  
+  </tr>
+  <tr>
+    <th>Member Since:</th>
+    <td><%= @user.created_at.strftime("%-m/%-d/%Y") %></td>
+  </tr>
+</table>

@@ -2,6 +2,11 @@ Given /^I have an active account$/ do
   @user = FactoryGirl.create(:user)
 end
 
+Given /^I am a logged-in user$/ do 
+  step 'I have an active account'
+  step 'I am logged in'
+end
+
 Given /^I am a logged-in user with (\d+) tasks$/ do |count|
   step 'I have an active account'
   FactoryGirl.create_list(:task, count.to_i, user_id: @user.id)
