@@ -78,6 +78,23 @@ $(document).ready ->
       )
     )
 
+  # When a user double-clicks a field on the task's 'show' view, the text should be
+  # replaced with a form.
+
+  $('#display_task > .panel-body p').dblclick( (e) ->
+    if $(e.target).closest('.pull-left').length
+      return
+
+    # Hide any visible forms and show the attributes of the task in 
+    # their place
+    $('form:visible').hide()
+    $('p').show()
+
+    # Hide the text of this and show its form
+    $(@).hide()
+    $(@).siblings('form').show()
+    )
+
   $('#task-panel .quick-add-form > form').on('ajax:success', (e, task) ->
     @.reset()
     $(@).blur()

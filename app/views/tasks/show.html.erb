@@ -1,34 +1,107 @@
-<p id="notice"><%= notice %></p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-8 col-lg-offset-2'>
+      <div id='display_task' class='panel panel-primary'>
+        <div class='panel-heading'>
+          <i class='fa fa-tasks fa-fw'></i>  Show Task
+        </div>
+        <div class='panel-body'>
+          <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
+          <h3>
+            <%= @task.title %>
+          </h3>
 
-<p>
-  <strong>Deadline:</strong>
-  <%= @task.deadline %>
-</p>
+          <% if @task.deadline %>
+            <div id='deadline'>
+              <span class='pull-left'>
+                <p><strong>Deadline:</strong></p>
+              </span>
+              <p>
+                <%= @task.deadline %>
+              </p>
+              <%= form_for @task, class: 'hidden' do |f| %>
+                <div class='input-group'>
+                  <%= f.label :deadline, class: 'sr-only' %>
+                  <%= f.text_field :deadline, value: @task.deadline, class: 'form-control' %>
+                  <span class='input-group-btn'>
+                    <%= f.button class: 'btn btn-default', title: 'Create' do %>
+                      <i class='fa fa-plus fa-fw'></i>
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
 
-<p>
-  <strong>Status:</strong>
-  <%= @task.status %>
-</p>
+          <% if @task.status %>
+            <div id='status'>
+              <span class='pull-left'>
+                <p><strong>Status:</strong></p>
+              </span>
+              <p>
+                <%= @task.status %>
+              </p>
+              <%= form_for @task, class: 'hidden' do |f| %>
+                <div class='input-group'>
+                  <%= f.label :status, class: 'sr-only' %>
+                  <%= f.select :status, ['In Progress', 'Blocking', 'Complete'], {selected: @task.status}, class: 'form-control' %>
+                  <span class='input-group-btn'>
+                    <%= f.button class: 'btn btn-default', title: 'Update' do %>
+                      <i class='fa fa-pencil fa-fw'></i>
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
 
-<p>
-  <strong>Priority:</strong>
-  <%= @task.priority %>
-</p>
+          <div id='priority'>
+            <span class='pull-left'>
+              <p><strong>Priority:</strong></p>
+            </span>
+            <p>
+              <%= @task.priority %>
+            </p>
+            <%= form_for @task, class: 'hidden' do |f| %>
+              <div class='input-group'>
+                <%= f.label :priority, class: 'sr-only' %>
+                <%= f.select :priority, ['Urgent', 'High', 'Normal', 'Low', 'Not Important'], {selected: @task.priority}, class: 'form-control' %>
+                <span class='input-group-btn'>
+                  <%= f.button class: 'btn btn-default', title: 'Update' do %>
+                    <i class='fa fa-pencil fa-fw'></i>
+                  <% end %>
+                </span>
+              </div>
+            <% end %>
+          </div>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @task.notes %>
-</p>
+          <% if @task.notes %>
+            <div id='notes'>
+              <span class='pull-left'>
+                <p><strong>Notes:</strong>
+              </span>
+              <p>
+                <%= @task.notes %>
+              </p>
 
-<p>
-  <strong>Position:</strong>
-  <%= @task.position %>
-</p>
+              <%= form_for @task, class: 'hidden' do |f| %>
+                <div class='input-group'>
+                  <%= f.label :notes, class: 'sr-only' %>
+                  <%= f.text_area :notes, rows: 3 %>
+                  <span class='input-group-btn'>
+                    <%= f.button class: 'btn btn-default', title: 'Update' do %>
+                      <i class='fa fa-pencil fa-fw'></i>
+                    <% end %>
+                  </span>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
 
-<%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', user_tasks_path(current_user) %>
+          <%= link_to 'Edit', edit_task_path(@task) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

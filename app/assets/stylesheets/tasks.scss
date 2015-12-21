@@ -102,3 +102,13 @@ $panel-yellow-color: #f0ad4e;
     }
   }
 }
+
+#display_task {  
+  form {
+    display: none;
+  }
+
+  .pull-left {
+    padding-right: 1em;
+  }
+}
