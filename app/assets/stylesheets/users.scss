@@ -1,6 +1,13 @@
 #user_profile {
+  .avatar {
+    float: left;
+    padding-right: 3em;
+  }
+
   table {
-    width: 100%;
+    tr {
+      height: 2em;
+    }
 
     th {
       padding-right: 1em;
