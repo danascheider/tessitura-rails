@@ -11,7 +11,7 @@
           <ul class='list-group'>
             <% Listing.all.each do |listing| %>
               <li id='listing-<%= listing.id %>' class='listing list-group-item'>
-                <h3><%= listing.title %></h3>
+                <h3><%= link_to listing.title, listing %></h3>
                 <p><%= listing.description %></p>
               </li>
             <% end %>

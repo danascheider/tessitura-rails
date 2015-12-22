@@ -11,15 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :title, class: 'sr-only' %>
+    <%= f.text_field :title, class: 'form-control', placeholder: 'Title (required)' %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+  <div class="form-group">
+    <%= f.label :description, class: 'sr-only' %>
+    <%= f.text_area :description, class: 'form-control', rows: 15, placeholder: 'Description' %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group actions">
+    <%= f.submit class: 'btn btn-lg btn-block btn-primary' %>
   </div>
 <% end %>

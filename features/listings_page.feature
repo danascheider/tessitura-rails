@@ -21,6 +21,6 @@ Feature: Listings page
     Given I am a logged-in admin
     And there are 2 listings
     When I visit the listing creation page
-    And I submit the creation form with valid attributes
+    And I submit the listing creation form with valid attributes
     Then there should be 3 listings
     And I should see a message that the listing was created successfully
