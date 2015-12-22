@@ -1,4 +1,4 @@
-$(document).ready ->
+ready = ->
   $('#user_birthdate').datepicker()
 
   # Show the form to edit an attribute when the user double-clicks
@@ -14,3 +14,6 @@ $(document).ready ->
     if !$('span.form').has(e.target).length
       $('#user_profile span.form').hide()
       $('#user_profile span.p').show()
+
+$(document).ready(ready)
+$(document).on('page:load', ready)

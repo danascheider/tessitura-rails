@@ -35,7 +35,7 @@ removeIncompleteTask = (li) ->
     number = element.html()
     element.html(number - 1)
 
-$(document).ready ->
+ready = ->
   # jQuery UI elements
   $(@).tooltip()
   $("#task_deadline").datepicker()
@@ -160,3 +160,6 @@ $(document).ready ->
         }
         )
     })
+
+$(document).ready(ready)
+$(document).on('page:load', ready)
