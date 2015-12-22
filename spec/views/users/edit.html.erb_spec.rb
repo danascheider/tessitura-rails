@@ -36,7 +36,7 @@ RSpec.describe "users/edit", type: :view do
 
       assert_select "input#user_city[name=?]", "user[city]"
 
-      assert_select "input#user_state[name=?]", "user[state]"
+      assert_select "select#user_state[name=?]", "user[state]"
 
       assert_select "input#user_zip[name=?]", "user[zip]"
     end
