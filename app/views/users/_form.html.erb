@@ -21,30 +21,55 @@
 
   <fieldset class='form-group login-information'>
     <legend>Login Information</legend>
+    <div class='form-group'>
       <%= f.email_field :email, class: 'form-control half-width left', title: 'E-mail Address', placeholder: 'E-mail Address (required)' %>
+    </div>
+    <div class='form-group'>
       <%= f.email_field :email_confirmation, class: 'form-control half-width right', title: 'Re-type E-mail', placeholder: 'Re-type E-mail (required)' %>
+    </div>
+    <div class='form-group'>
       <%= f.password_field :password, class: 'form-control half-width left', title: 'Password', placeholder: 'Password (required)' %>
+    </div>
+    <div class='form-group'>
       <%= f.password_field :password_confirmation, class: 'form-control half-width right', title: 'Re-type Password', placeholder: 'Re-type Password (required)' %>
+    </div>
   </fieldset>
   <fieldset class='form-group profile-information'>
     <legend>Profile Information</legend>
-    <%= f.text_field :first_name, class: 'form-control half-width left', title: 'First Name', placeholder: 'First Name (required)' %>
-    <%= f.text_field :last_name, class: 'form-control half-width right', title: 'Last Name', placeholder: 'Last Name (required)' %><br>
-    <%= f.date_select :birthdate, class: 'form-control', title: 'Birth Date', placeholder: 'Birth Date' %>
-    <%= f.text_field :address_1, class: 'form-control', title: 'Address Line 1', placeholder: 'Address Line 1' %>
-    <%= f.text_field :address_2, class: 'form-control', title: 'Address Line 2', placeholder: 'Address Line 2' %>
-    <%= f.text_field :city, class: 'form-control', title: 'City', placeholder: 'City' %>
-    <%= f.text_field :state, class: 'form-control half-width left', title: 'State', placeholder: 'State' %>
-    <%= f.text_field :zip, class: 'form-control half-width right', title: 'Zip', placeholder: 'Zip' %>
+    <div class='form-group'>
+      <%= f.text_field :first_name, class: 'form-control half-width left', title: 'First Name', placeholder: 'First Name (required)' %>
+    </div>
+    <div class='form-group'>
+      <%= f.text_field :last_name, class: 'form-control half-width right', title: 'Last Name', placeholder: 'Last Name (required)' %>
+    </div>
+    <div class='form-group'>
+      <%= f.text_field :birthdate, class: 'form-control', title: 'Birth Date', placeholder: 'Birth Date' %>
+    </div>
+    <div class='form-group'>
+      <%= f.text_field :address_1, class: 'form-control', title: 'Address Line 1', placeholder: 'Address Line 1' %>
+    </div>
+    <div class='form-group'>
+      <%= f.text_field :address_2, class: 'form-control', title: 'Address Line 2', placeholder: 'Address Line 2' %>
+    </div>
+    <div class='form-group'>
+      <%= f.text_field :city, class: 'form-control', title: 'City', placeholder: 'City' %>
+    </div>
+    <div class='form-group'>
+      <%= f.select :state, us_states, {include_blank: true, selected: @user.state}, class: 'form-control', title: 'State' %>
+    </div>
+    <div class='form-group'>
+      <%= f.text_field :zip, class: 'form-control half-width right', title: 'Zip', placeholder: 'Zip' %>
+    </div>
   </fieldset>
   <fieldset class='form-group terms'>
     <div class='checkbox'>
-      <%= f.label :terms, value: "I accept the Terms of Use" %>
       <%= f.check_box :terms, class: 'checkbox' %>
+      <%= f.label :terms, value: "I accept the Terms of Use" %>
     </div>
   </fieldset>
   <fieldset class="form-group submit actions">
-    <%= f.submit 'Create Account', class: 'btn btn-dark half-width' %>
-    <%= f.submit 'Clear Form', type: :reset, class: 'btn btn-dark half-width' %>
+    <div class='form-group'>
+      <%= f.submit 'Update Profile', class: 'btn btn-lg btn-block btn-primary' %>
+    </div>
   </fieldset>
 <% end %>

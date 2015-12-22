@@ -1,7 +1,7 @@
 <table>
   <tr data-attribute='name'>
     <th>Name:</th>
-    <td title='Double-click to edit'>
+    <td>
       <span class='profile-field' id='first_name'>
         <span class='p'><%= @user.first_name %></span>
         <span class='form'>
@@ -42,14 +42,13 @@
     <td>
       <span class='profile-field' id='email'>
         <span class='p'><%= @user.email %></span>
-        <span class='pull-right'><%= link_to 'Edit', edit_user_registration_path %></span>
       </span>
     </td>
   </tr>
 
   <tr data-attribute='birthdate'>
     <th>Birthdate:</th>
-    <td title='Double-click to edit'>
+    <td>
       <span class='profile-field' id='birthdate'>
         <span class='p'><%= @user.birthdate.is_a?(Date) ? @user.birthdate : 'N/A' %></span>  
       </span>
@@ -58,7 +57,7 @@
 
   <tr data-attribute='address_1'>
     <th>Address 1:</th>
-    <td title='Double-click to edit'>
+    <td>
       <span class='profile-field' id='address_1'>
         <span class='p'><%= @user.address_1.empty? ? 'N/A' : @user.address_1 %></span>
       </span>
@@ -67,7 +66,7 @@
 
   <tr data-attribute='address_2'>
     <th>Address 2:</th>
-    <td title='Double-click to edit'>
+    <td>
       <span class='profile-field' id='address_2'>
         <span class='p'><%= @user.address_2.empty? ? 'N/A' : @user.address_2 %></span>
       </span>
@@ -76,7 +75,7 @@
 
   <tr data-attribute='city'>
     <th>City:</th>
-    <td title='Double-click to edit'>
+    <td>
       <span class='profile-field' id='city'>
         <span class='p'><%= @user.city.empty? ? 'N/A' : @user.city %></span>   
       </span>
@@ -85,7 +84,7 @@
 
   <tr data-attribute='state'>
     <th>State:</th>
-    <td title='Double-click to edit'>
+    <td>
       <span class='profile-field' id='state'>
         <span class='p'><%= @user.state.empty? ? 'N/A' : @user.state %></span>
       </span>
@@ -94,7 +93,7 @@
 
   <tr data-attribute='zip'>
     <th>Zip:</th>
-    <td title='Double-click to edit'>
+    <td>
       <span class='profile-field' id='zip'>
         <span class='p'><%= @user.zip.empty? ? 'N/A' : @user.zip %></span>
       </span>
