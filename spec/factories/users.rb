@@ -18,5 +18,9 @@ FactoryGirl.define do
         FactoryGirl.create_list(:task, evaluator.count, :user_id => user.id)
       end
     end
+
+    factory :admin do 
+      admin true
+    end
   end
 end
