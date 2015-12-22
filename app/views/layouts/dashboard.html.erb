@@ -276,7 +276,7 @@
               <a href='/local' class='local-page-link sidebar-link internal-link' data-target='local' onclick='return false'><i class='fa fa-map-marker fa-fw' onclick='return false'></i> Local</a>
             </li>
             <li>
-              <a href='tables.html' class='internal-link' onclick='return false'><i class='fa fa-table fa-fw'></i> Tables</a>
+              <%= link_to raw('<i class="fa fa-newspaper-o fa-fw"></i> Listings'), listings_path, :class => 'listing-page-link sidebar-link' %>
             </li>
             <li>
               <a href='forms.html' class='internal-link' onclick='return false'><i class='fa fa-edit fa-fw'></i> Forms</a>
