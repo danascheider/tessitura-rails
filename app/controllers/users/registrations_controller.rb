@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-  layout 'homepage'
+  layout 'homepage', except: [:edit]
+  layout 'dashboard', only: [:edit]
   before_filter :configure_sign_up_params
   # before_filter :configure_account_update_params, only: [:update]
 
