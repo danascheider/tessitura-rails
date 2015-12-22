@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:dashboard, :show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:new, :create, :index]
+  before_action :authorize!, except: [:new, :create, :index]
   before_action :admin_only!, only: [:index]
   layout "dashboard", except: [:create, :new]
 
@@ -69,14 +69,17 @@ class UsersController < ApplicationController
   end
 
   private
-    def admin_only!
+    def authorize!
       authenticate_user!
 
-      if !user_logged_in?
-        redirect_to new_user_session_path
-      elsif !user.admin?
-        redirect_to @user
+      unless current_user.admin? || current_user == @user
+        redirect_to current_user 
       end
+    end
+
+    def admin_only!
+      authenticate_user!
+      redirect_to @user unless current_user.admin?
     end
 
     # Use callbacks to share common setup or constraints between actions.
