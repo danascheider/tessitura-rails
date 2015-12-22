@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
 
   has_many :tasks, -> { order(position: :asc) }, dependent: :destroy
 
+  def admin?
+    admin === true
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end
