@@ -1,7 +1,8 @@
 class ListingsController < ApplicationController
   layout "dashboard"
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, only: [:index, :show]
+  before_filter :admin_only!, except: [:index, :show]
 
   # GET /listings
   # GET /listings.json
@@ -64,6 +65,16 @@ class ListingsController < ApplicationController
   end
 
   private
+    def admin_only!
+      authenticate_user!
+      
+      if !user_signed_in?
+        redirect_to new_user_session_path
+      elsif !current_user.admin?
+        redirect_to listings_path
+      end        
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_listing
       @listing = Listing.find(params[:id])
