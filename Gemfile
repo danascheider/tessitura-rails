@@ -34,11 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'acts_as_list', '~> 0.7.2'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
+gem 'rails_12factor', '~> 0.0.3'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
