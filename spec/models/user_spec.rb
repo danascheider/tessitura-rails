@@ -44,4 +44,13 @@ RSpec.describe User, type: :model do
       expect(user.full_name).to eql 'User Name'
     end
   end
+
+  describe 'age' do 
+    context 'when the user has a birthdate' do 
+      it 'returns the user\'s age' do 
+        user = FactoryGirl.create(:user, birthdate: Date.current.years_ago(25))
+        expect(user.age).to eql 25
+      end
+    end
+  end
 end
