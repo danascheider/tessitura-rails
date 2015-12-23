@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  helper ListingHelper
   layout "dashboard"
   before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!, only: [:index, :show]
