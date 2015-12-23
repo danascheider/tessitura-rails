@@ -66,10 +66,10 @@ RSpec.describe ListingsController, type: :controller do
         expect(assigns(:listing)).to be_persisted
       end
 
-      it "redirects to the created listing" do
+      it "re-renders the :new view" do
         sign_in admin
         post :create, {:listing => valid_attributes}, valid_session
-        expect(response).to redirect_to(Listing.last)
+        expect(response).to render_template(:new)
       end
     end
 
