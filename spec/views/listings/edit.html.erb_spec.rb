@@ -15,7 +15,7 @@ RSpec.describe "listings/edit", type: :view do
 
       assert_select "input#listing_title[name=?]", "listing[title]"
 
-      assert_select "input#listing_description[name=?]", "listing[description]"
+      assert_select "textarea#listing_description[name=?]", "listing[description]"
     end
   end
 end

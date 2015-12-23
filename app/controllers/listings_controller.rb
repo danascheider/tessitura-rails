@@ -7,12 +7,14 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
-    @listings = Listing.all
+    @listings = Listing.all.order(:position)
+    @user = current_user
   end
 
   # GET /listings/1
   # GET /listings/1.json
   def show
+    @user = current_user
   end
 
   # GET /listings/new
@@ -31,7 +33,7 @@ class ListingsController < ApplicationController
 
     respond_to do |format|
       if @listing.save
-        format.html { render :new, notice: 'Listing was successfully created.' }
+        format.html { redirect_to new_listing_path, notice: 'Listing was successfully created.' }
         format.json { render :new, status: :created, location: @listing }
       else
         format.html { render :new }
@@ -68,11 +70,9 @@ class ListingsController < ApplicationController
     def admin_only!
       authenticate_user!
       
-      if !user_signed_in?
-        redirect_to new_user_session_path
-      elsif !current_user.admin?
+      unless current_user.admin?
         redirect_to listings_path
-      end        
+      end
     end
 
     # Use callbacks to share common setup or constraints between actions.

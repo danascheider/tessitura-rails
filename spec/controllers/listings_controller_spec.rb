@@ -69,7 +69,7 @@ RSpec.describe ListingsController, type: :controller do
       it "re-renders the :new view" do
         sign_in admin
         post :create, {:listing => valid_attributes}, valid_session
-        expect(response).to render_template(:new)
+        expect(response).to redirect_to(new_listing_path)
       end
     end
 

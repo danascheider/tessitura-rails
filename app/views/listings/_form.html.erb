@@ -11,6 +11,10 @@
     </div>
   <% end %>
 
+  <% if notice %>
+    <p id='notice'><%= notice %></p>
+  <% end %>
+
   <div class="form-group">
     <%= f.label :title, class: 'sr-only' %>
     <%= f.text_field :title, class: 'form-control', placeholder: 'Title (required)' %>

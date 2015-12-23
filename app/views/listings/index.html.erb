@@ -5,6 +5,10 @@
 
       <p id="notice"><%= notice %></p>
 
+      <% if @user.admin? %>
+        <%= button_to 'Add Listing', new_listing_path, method: :get, class: 'btn btn-lg btn-block btn-primary' %><br>
+      <% end %>
+
       <div id='listings' class='panel panel-default'>
         <div class='panel panel-body'>
 
@@ -13,6 +17,12 @@
               <li id='listing-<%= listing.id %>' class='listing list-group-item'>
                 <h3><%= link_to listing.title, listing %></h3>
                 <p><%= listing.description %></p>
+                <% if @user.admin? %>
+                <div>
+                  <span class='pull-left'><%= link_to 'Edit', edit_listing_path(listing) %></span>
+                  <span class='pull-right'><%= link_to 'Delete', listing_path(listing), method: :delete, confirm: 'Delete this listing?' %></span><br>
+                </div>
+                <% end %>
               </li>
             <% end %>
           </ul>
