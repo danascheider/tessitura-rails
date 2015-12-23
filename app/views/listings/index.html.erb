@@ -13,9 +13,12 @@
         <div class='panel panel-body'>
 
           <ul class='list-group'>
-            <% Listing.all.each do |listing| %>
+            <% @listings.each do |listing| %>
               <li id='listing-<%= listing.id %>' class='listing list-group-item'>
                 <h3><%= link_to listing.title, listing %></h3>
+                <% if listing.web_site %>
+                  <h4><%= link_to listing.web_site %></h4>
+                <% end %>
                 <p><%= listing.description %></p>
                 <% if @user.admin? %>
                 <div>
