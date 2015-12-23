@@ -1,11 +1,15 @@
 <div class='container'>
   <div class='row'>
     <div class='col-lg-6 col-lg-offset-3'>
-      <h2 class='page-heading'>Editing Task</h2>
+      <div class='panel panel-primary'>
+        <div class='panel-heading'><i class='fa fa-tasks fa-fw'></i> Editing Task</div>
+        <div class='panel-body'>
 
-      <%= render 'edit_form' %>
+          <%= render 'edit_form' %>
 
-      <%= link_to 'View Task', @task %>
+          <%= link_to 'View Task', @task %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
