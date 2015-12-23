@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'acts_as_list', '~> 0.7.2'
 
-gem 'rails_12factor', '~> 0.0.3'
+gem 'rails_12factor', '~> 0.0.3', group: :production
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
