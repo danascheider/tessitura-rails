@@ -1,3 +1,10 @@
 #listings .panel-body {
   margin: 0
 }
+
+table.listing_body {
+  th {
+    vertical-align: top;
+    padding-right : 1em;
+  }
+}
