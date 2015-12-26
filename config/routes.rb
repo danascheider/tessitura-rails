@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :listings
+  resources :listings do 
+    resources :deadlines, only: [:create, :update, :destroy], shallow: true
+  end
 
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations", passwords: "users/passwords" }
   resources :users do 
