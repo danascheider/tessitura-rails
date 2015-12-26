@@ -1,6 +1,6 @@
 language: ruby
 rvm: 
-  - 2.2.3
+  - 2.3.0
 env: 
   - COVERAGE=true
   - MANDRILL_USERNAME=dana.scheider@gmail.com
