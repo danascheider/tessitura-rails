@@ -21,6 +21,7 @@ class ListingsController < ApplicationController
   # GET /listings/new
   def new
     @listing = Listing.new
+    @listing.deadlines.build
   end
 
   # GET /listings/1/edit
@@ -83,6 +84,12 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:title, :web_site, :description, :position)
+      params.require(:listing).permit(
+        :title, 
+        :web_site, 
+        :description, 
+        :position,
+        :deadlines_attributes => [:id, :date, :description]
+        )
     end
 end

@@ -12,3 +12,19 @@ table.listing_body {
 span.favorite > a > i.fa-star {
   color: #ffcf40;
 }
+
+fieldset.nested-form {
+  border: 1px #ddd solid;
+  padding: 0.7em 1em 0 1em;
+  margin-bottom: 1em;
+  border-radius: 5px;
+
+  legend {
+    text-decoration: none;
+    border-bottom: none;
+    width: inherit;
+    box-sizing: border-box;
+    margin: auto 1em;
+    font-size: inherit;
+  }
+}
