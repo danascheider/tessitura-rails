@@ -1,0 +1,38 @@
+<div class='container'>
+  <div class='row'>
+    <h2 class='page-heading'>Your Favorites</h2>
+
+    <% if notice %>
+      <p id="notice"><%= notice %></p>
+    <% end %>
+
+      <div id='listings' class='panel panel-default'>
+        <div class='panel panel-body'>
+
+          <ul class='list-group'>
+            <% @favorites.each do |favorite| %>
+              <li id='listing-<%= favorite.id %>' class='listing list-group-item'>
+                <h3>
+                  <%= link_to favorite.title, favorite %>
+                </h3>
+                <% if favorite.web_site %>
+                  <h4><%= link_to favorite.web_site, "http://#{favorite.web_site}" %></h4>
+                <% end %>
+                <p><%= raw(description_html(favorite.description)) %></p>
+                <% if current_user.admin? %>
+                <div>
+                  <span class='pull-left'><%= link_to 'Edit', edit_listing_path(favorite) %></span>
+                  <span class='pull-right'><%= link_to 'Delete', listing_path(favorite), method: :delete, confirm: 'Delete this listing?' %></span><br>
+                </div>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+
+        </div>
+      </div>
+    </table>
+
+    <%= link_to 'View All Listings', listings_path %>
+  </div>
+</div>

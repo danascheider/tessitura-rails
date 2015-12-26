@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223211257) do
+ActiveRecord::Schema.define(version: 20151224011958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "listing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "listings", force: :cascade do |t|
     t.string   "title"
@@ -23,6 +30,7 @@ ActiveRecord::Schema.define(version: 20151223211257) do
     t.datetime "updated_at",  null: false
     t.integer  "position"
     t.string   "web_site"
+    t.integer  "favorite_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -65,6 +73,7 @@ ActiveRecord::Schema.define(version: 20151223211257) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.integer  "favorite_id"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

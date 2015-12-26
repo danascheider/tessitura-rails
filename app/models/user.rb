@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   validates_acceptance_of :terms
 
   has_many :tasks, -> { order(position: :asc) }, dependent: :destroy
+  has_many :favorites
+  has_many :listings, through: :favorites
 
   def admin?
     admin === true

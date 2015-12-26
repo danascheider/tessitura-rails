@@ -14,8 +14,16 @@
 
           <ul class='list-group'>
             <% @listings.each do |listing| %>
+              <% is_favorite = current_user.listings.include?(listing) %>
+
               <li id='listing-<%= listing.id %>' class='listing list-group-item'>
-                <h3><%= link_to listing.title, listing %></h3>
+                <h3>
+                  <%= link_to listing.title, listing %>
+                    
+                  <span class='pull-right <%= is_favorite ? "favorite" : "add-to-favorites" %>' data-user-id='<%= current_user.id %>' data-favorite-id='<%= is_favorite ? Favorite.find_by(user_id: current_user.id, listing_id: listing.id).id : "" %>'>
+                    <a href='' onclick='return false'><i class='fa fa-star fa-fw' title='<%= is_favorite ? "Remove Favorite" : "Add to Favorites" %>'></i></a>
+                  </span>
+                </h3>
                 <% if listing.web_site %>
                   <h4><%= link_to listing.web_site %></h4>
                 <% end %>
@@ -29,7 +37,6 @@
               </li>
             <% end %>
           </ul>
-
         </div>
       </div>
     </div>

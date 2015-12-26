@@ -8,3 +8,7 @@ table.listing_body {
     padding-right : 1em;
   }
 }
+
+span.favorite > a > i.fa-star {
+  color: #ffcf40;
+}

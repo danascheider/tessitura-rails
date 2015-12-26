@@ -1,12 +1,17 @@
 <div class='container'>
   <div class='row'>
     <div class='col-lg-8 col-lg-offset-2'>
-      <div class='panel panel-primary'>
+      <div id='listing-<%= @listing.id %>' class='panel panel-primary'>
         <div class='panel-heading'>
           <i class='fa fa-newspaper-o fa-fw'></i>  View Listing
         </div>
         <div class='panel-body'>
-          <h2><%= @listing.title %></h2> 
+          <h2>
+            <%= @listing.title %>
+            <span class='pull-right'>
+              <%= link_to raw('<i class="fa fa-star fa-fw"></i>'), user_favorites_path(current_user, favorite: { listing_id: @listing.id, user_id: current_user.id }), method: :post, title: 'Add to Favorites' %>
+            </span>
+          </h2> 
           <p id="notice"><%= notice %></p>
 
           <table class='listing_body'>

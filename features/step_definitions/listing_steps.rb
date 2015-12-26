@@ -6,6 +6,10 @@ Given /^there are (\d+) listings$/ do |count|
   FactoryGirl.create_list(:listing, count.to_i)
 end
 
+Given /^I am viewing the 1st listing$/ do 
+  visit listing_path(Listing.first)
+end
+
 When /^I visit the listings page$/ do 
   visit listings_path
 end
