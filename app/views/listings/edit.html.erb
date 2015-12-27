@@ -1,6 +1,16 @@
-<h1>Editing Listing</h1>
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-6 col-lg-offset-3'>
+      <div class='panel panel-primary'>
+        <div class='panel-heading'><i class='fa fa-newspaper-o fa-fw'></i> Editing Listing</div>
+        <div class='panel-body'>
 
-<%= render 'form' %>
+          <%= render 'form' %>
 
-<%= link_to 'Show', @listing %> |
-<%= link_to 'Back', listings_path %>
+          <span class='pull-left'><%= link_to 'View', @listing %></span>
+          <span class='pull-right'><%= link_to 'View All', listings_path %></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
