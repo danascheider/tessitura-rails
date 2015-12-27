@@ -17,7 +17,7 @@
           <table class='listing_body'>
             <tr>
               <th>Web Site:</th>
-              <td><%= @listing.web_site %></td>
+              <td><%= link_to @listing.web_site, "http://#{@listing.web_site}" %></td>
             </tr>
 
             <% if @listing.deadlines.count > 0 %>
