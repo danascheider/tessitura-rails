@@ -20,6 +20,13 @@
               <td><%= @listing.web_site %></td>
             </tr>
 
+            <% if @listing.deadlines.count > 0 %>
+              <tr>
+                <th>Deadline:</th>
+                <td><%= @listing.deadlines.first.date %> (<%= @listing.deadlines.first.description %>)</td>
+              </tr>
+            <% end %>
+
             <tr>
               <th>Description:</th>
               <td><%= raw(description_html(@listing.description)) %></td>

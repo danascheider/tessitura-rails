@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "listings/show", type: :view do
   before(:each) do
-    @listing = assign(:listing, FactoryGirl.create(:listing))
+    @listing = assign(:listing, FactoryGirl.create(:listing_with_deadline))
     @user = assign(:user, FactoryGirl.create(:user))
   end
 
@@ -11,5 +11,6 @@ RSpec.describe "listings/show", type: :view do
     render
     expect(rendered).to match(/#{@listing.title}/)
     expect(rendered).to match(/#{@listing.description}/)
+    expect(rendered).to match(/#{@listing.deadlines.first.date}/)
   end
 end
