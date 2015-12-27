@@ -26,6 +26,7 @@ class ListingsController < ApplicationController
 
   # GET /listings/1/edit
   def edit
+    @listing.deadlines.build if @listing.deadlines.count == 0 
   end
 
   # POST /listings
