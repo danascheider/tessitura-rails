@@ -23,6 +23,8 @@ RSpec.describe "listings/new", type: :view do
 
     assert_select "form[action=?][method=?]", listings_path, "post" do
       assert_select "input#listing_title[name=?]", "listing[title]"
+      assert_select "input#listing_minimum_age[name=?]", "listing[minimum_age]"
+      assert_select "input#listing_maximum_age[name=?]", "listing[maximum_age]"
       assert_select "textarea#listing_description[name=?]", "listing[description]"
       assert_select "input#listing_web_site[name=?]", "listing[web_site]"
     end
