@@ -13,4 +13,13 @@ RSpec.describe Deadline, type: :model do
       expect(Deadline.upcoming.to_a).to eq upcoming
     end
   end
+
+  describe "past scope" do 
+    it "includes only past deadlines" do 
+      upcoming = FactoryGirl.create_list(:upcoming_deadline, 2)
+      past = FactoryGirl.create_list(:past_deadline, 2)
+
+      expect(Deadline.past.to_a).to eq past
+    end
+  end
 end
