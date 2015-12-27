@@ -4,8 +4,6 @@ ready = ->
 addToFavorites = (e) ->
   e.preventDefault()
 
-  console.log('Adding to favorites')
-
   listing_id = $(@).closest('.listing').attr('id').match(/(\d+)/)[0]
   user_id = $(@).closest('span.add-to-favorites').attr('data-user-id')
 
@@ -26,8 +24,6 @@ addToFavorites = (e) ->
 
 removeFromFavorites = (e) ->
   e.preventDefault()
-
-  console.log('Removing from favorites')
 
   favorite_id = $(@).closest('span.favorite').attr('data-favorite-id')
   user_id = $(@).closest('span.favorite').attr('data-user-id')

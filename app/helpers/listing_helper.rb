@@ -5,6 +5,15 @@ module ListingHelper
     array.join
   end
 
+  def truncated_title(title, chars)
+    return title if title.length <= chars
+    
+    ending = ' ...'
+    array = title[0..chars - (ending.length + 1)].split(' ')
+    array.pop
+    array.join(' ') + ending
+  end
+
   def user_is_eligible(user, listing)
     true unless !user.admin? && user_is_wrong_age(user, listing)
   end

@@ -7,7 +7,7 @@ When /^I visit my dashboard$/ do
 end
 
 Then /^the 'tasks' widget should say I have (\d+) incomplete tasks$/ do |count|
-  within 'div.panel[data-target=tasks]' do 
+  within "div.panel[data-target='users/#{@user.id}/tasks']" do 
     expect(find('.huge')).to have_content(count)
   end
 end

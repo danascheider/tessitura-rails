@@ -3,7 +3,7 @@ $panel-green-color: #5db85b;
 $panel-blue-color: #418bca;
 $panel-yellow-color: #f0ad4e;
 
-#kanban_board, #task-panel {
+#kanban_board, #task-panel, #listing_panel {
   box-sizing: border-box;
   padding-bottom: 0;
 
@@ -59,6 +59,7 @@ $panel-yellow-color: #f0ad4e;
     }
 
     li.task,
+    li.listing,
     li.quick-add-form {
       padding: 0.75em 1em;
     }

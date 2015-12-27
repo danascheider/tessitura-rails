@@ -6,7 +6,7 @@
   
   <!-- First dashboard widget: Tasks -->
   <div class='col-lg-3 col-md-6'>
-    <div id='top_task_widget' class='panel panel-primary dash-widget internal-link' data-target="users/#{@user.id}/tasks"> 
+    <div id='top_task_widget' class='panel panel-primary dash-widget internal-link' data-target="users/<%= @user.id %>/tasks"> 
       <div class='panel-heading'>
         <div class='row'>
 
@@ -196,5 +196,31 @@
       </div>
     </div>
   </div> <!-- end task panel -->
-  <div class='col-lg-8'></div> <!-- calendar -->
+
+  <!-- listing panel -->
+  <div class='col-lg-4'>
+    <div id='listing_panel' class='panel panel-green dash-widget'>
+      <div class='panel-heading'>
+        <i class='fa fa-newspaper-o fa-fw'></i>  Latest Listings
+      </div>
+      <div class='panel-body'>
+        <ul class='listing-list'>
+          <% if Listing.count == 0 %>
+            <li>There are no new listings</li>
+          <% else %>
+            <% Listing.all[0..9].each do |listing| %>
+              <li id='listing_<%= listing.id %>' class='listing'>
+                <%= link_to truncated_title(listing.title, 55), listing %>
+                <% is_favorite = current_user.listings.include?(listing) %>
+                <span class='pull-right <%= is_favorite ? "favorite" : "add-to-favorites" %>' data-user-id='<%= current_user.id %>' data-favorite-id='<%= is_favorite ? Favorite.find_by(user_id: current_user.id, listing_id: listing.id).id : "" %>'>
+                  <a href='' onclick='return false'><i class='fa fa-star fa-fw' title='<%= is_favorite ? "Remove Favorite" : "Add to Favorites" %>'></i></a>
+                </span>
+              </li>
+            <% end %>
+            <li class='listing'><%= link_to 'More...', listings_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div> <!-- end listing panel -->
 </div> <!-- end row -->

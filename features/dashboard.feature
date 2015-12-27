@@ -3,9 +3,15 @@ Feature: User dashboard
   Background:
     Given I am a logged-in user with 3 tasks
 
-  Scenario: Top widgets
+  Scenario: Task widget
     When I visit my dashboard
     Then the 'tasks' widget should say I have 3 incomplete tasks
+
+  Scenario: Deadline widget
+    Given there are 2 upcoming deadlines
+    And there are 3 past deadlines
+    When I visit my dashboard
+    Then the 'deadlines' widget should say there are 2 upcoming deadlines
 
   Scenario: User has complete tasks
     Given I have 1 complete task
@@ -22,12 +28,6 @@ Feature: User dashboard
     Given I have a shitload of incomplete tasks
     When I visit my dashboard
     Then the '#task-panel' element should display 10 tasks
-
-  Scenario: There are deadlines
-    Given there are 2 upcoming deadlines
-    And there are 3 past deadlines
-    When I visit my dashboard
-    Then the 'deadlines' widget should say there are 2 upcoming deadlines
 
   @javascript
   Scenario: Mark task complete from the task panel
