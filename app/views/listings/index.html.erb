@@ -25,7 +25,10 @@
                   </span>
                 </h3>
                 <% if listing.web_site %>
-                  <h4><%= link_to listing.web_site %></h4>
+                  <p><%= link_to listing.web_site %></p>
+                <% end %>
+                <% if listing.deadlines.count > 0 %>
+                  <p><strong>Deadline:</strong> <%= long_display_date(listing.deadlines.first.date) %> <%= listing.deadlines.first.description.empty? ? "" : "(#{listing.deadlines.first.description})" %></p>
                 <% end %>
                 <p><%= raw(description_html(listing.description)) %></p>
                 <% if @user.admin? %>

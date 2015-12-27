@@ -1,4 +1,20 @@
 module ApplicationHelper
+  def days 
+    ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+  end
+
+  def months
+    ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+  end
+
+  def short_display_date(date)
+    date.strftime("%-m/%-d/%Y")
+  end
+
+  def long_display_date(date)
+    "#{days[date.wday]}, #{months[date.month]} #{date.mday}, #{date.year}"
+  end
+
   def resource_name
     :user
   end

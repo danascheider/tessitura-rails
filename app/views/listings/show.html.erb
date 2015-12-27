@@ -23,7 +23,7 @@
             <% if @listing.deadlines.count > 0 %>
               <tr>
                 <th>Deadline:</th>
-                <td><%= @listing.deadlines.first.date %> (<%= @listing.deadlines.first.description %>)</td>
+                <td><%= long_display_date(@listing.deadlines.first.date) %> (<%= @listing.deadlines.first.description %>)</td>
               </tr>
             <% end %>
 

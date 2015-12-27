@@ -1,5 +1,14 @@
 #listings .panel-body {
-  margin: 0
+  margin: 0;
+
+  .listing h3 > a {
+    color: #333;
+
+    &:hover {
+      text-decoration: underline;
+      color     : #428bca;
+    }
+  }
 }
 
 table.listing_body {

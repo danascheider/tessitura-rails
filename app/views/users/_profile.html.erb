@@ -50,7 +50,7 @@
     <th>Birthdate:</th>
     <td>
       <span class='profile-field' id='birthdate'>
-        <span class='p'><%= @user.birthdate.is_a?(Date) ? @user.birthdate.strftime("%-m/%-d/%Y") : 'N/A' %></span>  
+        <span class='p'><%= @user.birthdate.is_a?(Date) ? short_display_date(@user.birthdate) : 'N/A' %></span>  
       </span>
     </td>
   </tr>

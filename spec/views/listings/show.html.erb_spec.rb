@@ -11,6 +11,6 @@ RSpec.describe "listings/show", type: :view do
     render
     expect(rendered).to match(/#{@listing.title}/)
     expect(rendered).to match(/#{@listing.description}/)
-    expect(rendered).to match(/#{@listing.deadlines.first.date}/)
+    expect(rendered).to match(/Deadline/)
   end
 end
