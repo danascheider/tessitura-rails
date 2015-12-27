@@ -88,6 +88,8 @@ class ListingsController < ApplicationController
         :title, 
         :web_site, 
         :description, 
+        :minimum_age,
+        :maximum_age,
         :position,
         :deadlines_attributes => [:id, :date, :description]
         )
