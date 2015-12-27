@@ -57,3 +57,7 @@ end
 Then /^I should still be on my tasks page$/ do 
   expect(current_path).to eql user_tasks_path(@user)
 end
+
+Then /^I should be on the profile page$/ do 
+  expect(current_path).to eql user_path(@user)
+end

@@ -1,13 +1,15 @@
 <%= form_for(@user) do |f| %>
   <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <div id="error_message" class="panel panel-danger">
+      <div class="panel-heading"><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</div>
 
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <div class="panel-body">
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
@@ -43,7 +45,7 @@
       <%= f.text_field :last_name, class: 'form-control half-width right', title: 'Last Name', placeholder: 'Last Name (required)' %>
     </div>
     <div class='form-group'>
-      <%= f.text_field :birthdate, class: 'form-control', title: 'Birth Date', placeholder: 'Birth Date' %>
+      <%= f.date_field :birthdate, class: 'form-control', title: 'Birth Date', placeholder: 'Birth Date' %>
     </div>
     <div class='form-group'>
       <%= f.text_field :address_1, class: 'form-control', title: 'Address Line 1', placeholder: 'Address Line 1' %>
