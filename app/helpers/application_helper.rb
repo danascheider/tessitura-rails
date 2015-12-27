@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def long_display_date(date)
-    "#{days[date.wday]}, #{months[date.month]} #{date.mday}, #{date.year}"
+    "#{days[date.wday]}, #{months[date.month - 1]} #{date.mday}, #{date.year}"
   end
 
   def resource_name
