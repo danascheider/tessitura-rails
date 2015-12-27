@@ -1,3 +1,3 @@
 == README
 
-{<img src="https://travis-ci.org/danascheider/tessitura-rails.svg" alt="Build Status" />}[https://travis-ci.org/danascheider/tessitura-rails]
+{<img src="https://travis-ci.org/danascheider/tessitura-rails.svg" alt="Build Status" />}[https://travis-ci.org/danascheider/tessitura-rails]  {<img src="https://coveralls.io/repos/danascheider/tessitura-rails/badge.svg?branch=master&service=github" alt="Coverage Status" />}[https://coveralls.io/github/danascheider/tessitura-rails?branch=master]
