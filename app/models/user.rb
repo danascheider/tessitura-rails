@@ -17,7 +17,9 @@ class User < ActiveRecord::Base
   end
 
   def age
-    now = Time.now.utc.to_date
+    return nil unless birthdate
+    
+    now = Date.current
     now.year - birthdate.year - ((now.month > birthdate.month || (now.month == birthdate.month && now.day >= birthdate.day)) ? 0 : 1)
   end
 

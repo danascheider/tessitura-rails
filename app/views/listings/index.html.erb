@@ -14,39 +14,42 @@
 
           <ul class='list-group'>
             <% @listings.each do |listing| %>
-              <% is_favorite = current_user.listings.include?(listing) %>
+              <% if current_user.admin? || user_is_eligible(current_user, listing) %>
 
-              <li id='listing-<%= listing.id %>' class='listing list-group-item'>
-                <h3>
-                  <%= link_to listing.title, listing %>
-                    
-                  <span class='pull-right <%= is_favorite ? "favorite" : "add-to-favorites" %>' data-user-id='<%= current_user.id %>' data-favorite-id='<%= is_favorite ? Favorite.find_by(user_id: current_user.id, listing_id: listing.id).id : "" %>'>
-                    <a href='' onclick='return false'><i class='fa fa-star fa-fw' title='<%= is_favorite ? "Remove Favorite" : "Add to Favorites" %>'></i></a>
-                  </span>
-                </h3>
-                <% if listing.web_site %>
-                  <p><%= link_to listing.web_site %></p>
-                <% end %>
-                <% if listing.deadlines.count > 0 %>
-                  <p><strong>Deadline:</strong> <%= long_display_date(listing.deadlines.first.date) %> <%= listing.deadlines.first.description.empty? ? "" : "(#{listing.deadlines.first.description})" %></p>
-                <% end %>
+                <% is_favorite = current_user.listings.include?(listing) %>
 
-                <% if listing.minimum_age %>
-                  <p><strong>Minimum Age:</strong> <%= listing.minimum_age %>
-                <% end %>
+                <li id='listing-<%= listing.id %>' class='listing list-group-item'>
+                  <h3>
+                    <%= link_to listing.title, listing %>
+                      
+                    <span class='pull-right <%= is_favorite ? "favorite" : "add-to-favorites" %>' data-user-id='<%= current_user.id %>' data-favorite-id='<%= is_favorite ? Favorite.find_by(user_id: current_user.id, listing_id: listing.id).id : "" %>'>
+                      <a href='' onclick='return false'><i class='fa fa-star fa-fw' title='<%= is_favorite ? "Remove Favorite" : "Add to Favorites" %>'></i></a>
+                    </span>
+                  </h3>
+                  <% if listing.web_site %>
+                    <p><%= link_to listing.web_site %></p>
+                  <% end %>
+                  <% if listing.deadlines.count > 0 %>
+                    <p><strong>Deadline:</strong> <%= long_display_date(listing.deadlines.first.date) %> <%= listing.deadlines.first.description.empty? ? "" : "(#{listing.deadlines.first.description})" %></p>
+                  <% end %>
 
-                <% if listing.maximum_age %>
-                  <p><strong>Maximum Age:</strong> <%= listing.maximum_age %>
-                <% end %>
+                  <% if listing.minimum_age %>
+                    <p><strong>Minimum Age:</strong> <%= listing.minimum_age %>
+                  <% end %>
 
-                <p><%= raw(description_html(listing.description)) %></p>
-                <% if @user.admin? %>
-                <div>
-                  <span class='pull-left'><%= link_to 'Edit', edit_listing_path(listing) %></span>
-                  <span class='pull-right'><%= link_to 'Delete', listing_path(listing), method: :delete, confirm: 'Delete this listing?' %></span><br>
-                </div>
-                <% end %>
-              </li>
+                  <% if listing.maximum_age %>
+                    <p><strong>Maximum Age:</strong> <%= listing.maximum_age %>
+                  <% end %>
+
+                  <p><%= raw(description_html(listing.description)) %></p>
+                  <% if @user.admin? %>
+                  <div>
+                    <span class='pull-left'><%= link_to 'Edit', edit_listing_path(listing) %></span>
+                    <span class='pull-right'><%= link_to 'Delete', listing_path(listing), method: :delete, confirm: 'Delete this listing?' %></span><br>
+                  </div>
+                  <% end %>
+                </li>
+              <% end %>
             <% end %>
           </ul>
         </div>

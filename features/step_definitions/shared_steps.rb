@@ -18,6 +18,14 @@ Given /^I am a logged-in user with (\d+) tasks$/ do |count|
   step 'I am logged in'
 end
 
+Given /^I am a logged\-in user with the following attributes:$/ do |table|
+  step 'I have an active account'
+  table.hashes.each do |hash|
+    @user.update(hash)
+  end
+   step 'I am logged in'
+end
+
 Given /^I have clicked the '([^']*)' link$/ do |text|
   click_link text
 end

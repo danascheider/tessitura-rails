@@ -10,6 +10,12 @@ Given /^there are no listings$/ do
   expect(Listing.count).to eql 0
 end
 
+Given /^there are listings with the following attributes:$/ do |table|
+  table.hashes.each do |hash|
+    FactoryGirl.create(:listing, hash)
+  end
+end
+
 Given /^I am viewing the 1st listing$/ do 
   visit listing_path(Listing.first)
 end
@@ -40,6 +46,10 @@ When /^I submit the creation form with valid deadline information$/ do
 end
 
 Then /^I should see all (\d+) listings$/ do |count|
+  expect(page).to have_css('.listing', count: count.to_i)
+end
+
+Then /^I should only see (\d+) listings?$/ do |count|
   expect(page).to have_css('.listing', count: count.to_i)
 end
 
