@@ -217,7 +217,7 @@
                 </span>
               </li>
             <% end %>
-            <li class='listing'><%= link_to 'More...', listings_path %></li>
+            <li class='listing'><%= button_to 'View All', listings_path, method: :get, class: 'btn btn-block btn-success' %></li>
           <% end %>
         </ul>
       </div>
