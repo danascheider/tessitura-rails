@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :deadline do
     association :listing 
+    association :task
 
     date "2015-12-25"
     description "MyString"

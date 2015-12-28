@@ -16,3 +16,17 @@ Feature: Deadlines
         | parent  |
         | listing |
         | task    |
+
+  Scenario: Listing with shared deadline gets deleted
+    Given one task
+    And one listing
+    And the listing and the task share a deadline
+    When the listing is deleted
+    Then the deadline should not be deleted
+
+  Scenario: Task with shared deadline gets deleted
+    Given one task
+    And one listing
+    And the listing and the task share a deadline
+    When the task is deleted
+    Then the deadline should not be deleted
