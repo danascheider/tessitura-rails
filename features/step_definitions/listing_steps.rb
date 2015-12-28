@@ -20,6 +20,10 @@ Given /^I am viewing the 1st listing$/ do
   visit listing_path(Listing.first)
 end
 
+Given /^one listing$/ do 
+  @listing = FactoryGirl.create(:listing)
+end
+
 When /^I visit the listings page$/ do 
   visit listings_path
 end
@@ -43,6 +47,10 @@ When /^I submit the creation form with valid deadline information$/ do
     fill_in 'listing_deadlines_attributes_0_description', with: 'Materials received'
     click_button 'Create Listing'
   end
+end
+
+When /^the listing is deleted$/ do 
+  @listing.destroy
 end
 
 Then /^I should see all (\d+) listings$/ do |count|

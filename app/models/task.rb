@@ -6,7 +6,7 @@ class Task < ActiveRecord::Base
   validates :priority, inclusion: { in: ["Urgent", "High", "Normal", "Low", "Not Important"] }
 
   belongs_to :user
-  has_one :deadline
+  has_one :deadline, dependent: :destroy
   acts_as_list scope: :user, add_new_at: :top
   accepts_nested_attributes_for :deadline
 
