@@ -6,12 +6,14 @@ class Task < ActiveRecord::Base
   validates :priority, inclusion: { in: ["Urgent", "High", "Normal", "Low", "Not Important"] }
 
   belongs_to :user
+  has_one :deadline
   acts_as_list scope: :user, add_new_at: :top
+  accepts_nested_attributes_for :deadline
 
   def display_deadline
-    return nil if deadline.blank?
+    return nil unless self.deadline
     
-    datetime = deadline.to_datetime
+    datetime = deadline.date.to_datetime
     weekday = DateTime::DAYNAMES[datetime.cwday == 7 ? 0 : datetime.cwday]
     month = DateTime::MONTHNAMES[datetime.month]
     day = datetime.day

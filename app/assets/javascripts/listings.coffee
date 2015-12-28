@@ -1,6 +1,5 @@
 ready = ->
-  $('#listing_deadlines_attributes_0_date').datepicker();
-
+  
 addToFavorites = (e) ->
   e.preventDefault()
 

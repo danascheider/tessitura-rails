@@ -57,7 +57,8 @@ RSpec.describe Task, type: :model do
   describe 'display_deadline' do 
     context 'when the deadline is present' do 
       it 'returns the date in human readable form' do 
-        task = FactoryGirl.create(:task, deadline: '2015-10-22 18:12:00')
+        task = FactoryGirl.create(:task_with_deadline)
+        task.deadline.update(date: '2015-10-22')
         expect(task.display_deadline).to eql 'Thursday, October 22, 2015'
       end
     end

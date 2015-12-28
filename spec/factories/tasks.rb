@@ -3,8 +3,13 @@ FactoryGirl.define do
     association :user
     
     title "MyString"
-    deadline "2015-11-24 16:18:18"
     position 1
+
+    factory :task_with_deadline do 
+      after(:create) do |task, evaluator|
+        FactoryGirl.create(:deadline, task: task)
+      end
+    end
   end
 
 end
