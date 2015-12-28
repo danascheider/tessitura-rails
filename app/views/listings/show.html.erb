@@ -20,6 +20,13 @@
               <td><%= link_to @listing.web_site, "http://#{@listing.web_site}" %></td>
             </tr>
 
+            <% if @listing.application_url && @listing.application_url.length > 0 %>
+              <tr>
+                <th>Application Form:</th>
+                <td><%= link_to @listing.application_url, @listing.application_url %></td>
+              </tr>
+            <% end %>
+
             <% if @listing.deadlines.count > 0 %>
               <tr>
                 <th>Deadline:</th>

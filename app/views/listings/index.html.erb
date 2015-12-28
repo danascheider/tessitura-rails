@@ -41,6 +41,10 @@
                     <p><strong>Maximum Age:</strong> <%= listing.maximum_age %>
                   <% end %>
 
+                  <% if listing.application_url %>
+                    <p><strong>Application Form:</strong> <%= link_to listing.application_url, listing.application_url %></p>
+                  <% end %>
+
                   <p><%= raw(description_html(listing.description)) %></p>
                   <% if @user.admin? %>
                   <div>

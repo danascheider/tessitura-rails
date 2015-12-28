@@ -88,6 +88,7 @@ class ListingsController < ApplicationController
       params.require(:listing).permit(
         :title, 
         :web_site, 
+        :application_url,
         :description, 
         :minimum_age,
         :maximum_age,
