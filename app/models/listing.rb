@@ -12,8 +12,10 @@ class Listing < ActiveRecord::Base
 
   private
     def destroy_orphan_deadlines
-      self.deadlines.each do |deadline|
-        deadline.destroy unless deadline.task
+      if self.deadlines.count > 0
+        self.deadlines.each do |deadline|
+          deadline.destroy unless deadline.task
+        end
       end
     end
 end
