@@ -2,8 +2,16 @@ Given /^I am not logged in$/ do
   delete destroy_user_session_path
 end
 
+Given /^I am viewing the listing$/ do 
+  visit listing_path(@listing)
+end
+
 Given /^there are (\d+) listings$/ do |count|
   FactoryGirl.create_list(:listing, count.to_i)
+end
+
+Given /^there is 1 listing with a deadline$/ do 
+  @listing = FactoryGirl.create(:listing_with_deadline)
 end
 
 Given /^there are no listings$/ do 

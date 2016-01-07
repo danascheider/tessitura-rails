@@ -17,6 +17,10 @@ Given /^one of my tasks is blocking$/ do
   @user.tasks.first.update(:status => 'Blocking')
 end
 
+Given /^I have no tasks$/ do 
+  @user.tasks.count == 0
+end
+
 When /^I visit my tasks page$/ do 
   visit "/users/#{@user.id}/tasks"
 end

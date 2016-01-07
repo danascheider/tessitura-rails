@@ -15,10 +15,12 @@
           <p id="notice"><%= notice %></p>
 
           <table class='listing_body'>
-            <tr>
-              <th>Web Site:</th>
-              <td><%= link_to @listing.web_site, "http://#{@listing.web_site}" %></td>
-            </tr>
+            <% if @listing.web_site %>
+              <tr>
+                <th>Web Site:</th>
+                <td><%= link_to @listing.web_site, "http://#{@listing.web_site}" %></td>
+              </tr>
+            <% end %>
 
             <% if @listing.application_url && @listing.application_url.length > 0 %>
               <tr>
@@ -30,7 +32,8 @@
             <% if @listing.deadlines.count > 0 %>
               <tr>
                 <th>Deadline:</th>
-                <td><%= long_display_date(@listing.deadlines.first.date) %> <%= @listing.deadlines.first.description.empty? ? '' : "(#{@listing.deadlines.first.description})" %></td>
+                <td><%= long_display_date(@listing.deadlines.first.date) %> <%= @listing.deadlines.first.description.empty? ? '' : "(#{@listing.deadlines.first.description})" %> 
+                <span class='pull-right'><%= link_to raw('Create Task <i class="fa fa-external-link fa-fw"></i>'), new_user_task_path(current_user) %></span></td>
               </tr>
             <% end %>
 
