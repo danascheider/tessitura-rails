@@ -18,11 +18,13 @@ class TasksController < ApplicationController
   # GET /users/:id/tasks/new
   def new
     @task = Task.new
+    Deadline.new(task: @task)
     @user = current_user || User.find(params[:user_id])
   end
 
   # GET /tasks/1/edit
   def edit
+    Deadline.new(task: @task) unless @task.deadline
   end
 
   # POST users/:id/tasks
@@ -88,6 +90,13 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :deadline, :status, :priority, :notes, :position)
+      params.require(:task).permit(
+        :title, 
+        :status, 
+        :priority, 
+        :notes, 
+        :position,
+        :deadline_attributes => [:id, :date, :description]
+      )
     end
 end

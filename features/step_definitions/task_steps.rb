@@ -5,6 +5,10 @@ Given /^I have 1 tasks? in each status category$/ do
   FactoryGirl.create(:task, user_id: @user.id, status: 'Complete')
 end
 
+Given /^one task$/ do 
+  @task = FactoryGirl.create(:task)
+end
+
 Given /^I have a shitload of incomplete tasks$/ do 
   FactoryGirl.create_list(:task, 15, user_id: @user.id)
 end
@@ -17,7 +21,7 @@ When /^I visit my tasks page$/ do
   visit "/users/#{@user.id}/tasks"
 end
 
-When(/^I create a task called '([^']*)' using the quick\-add form in the '([^']*)' column$/) do |title, column|
+When /^I create a task called '([^']*)' using the quick\-add form in the '([^']*)' column$/ do |title, column|
   within ".quick-add-form[data-status=#{column}]" do 
     fill_in 'Title', with: title
     click_button 'Create'
@@ -42,7 +46,7 @@ When /^I visit the other user's tasks page$/ do
   visit "/users/#{other_uid}/tasks"
 end
 
-When(/^I click the '([^']*)' icon for my 'In Progress' task$/) do |icon|
+When /^I click the '([^']*)' icon for my 'In Progress' task$/ do |icon|
   within '#in_progress_tasks' do 
     within '.task' do 
       click_link icon
@@ -52,7 +56,7 @@ When(/^I click the '([^']*)' icon for my 'In Progress' task$/) do |icon|
   sleep 1
 end
 
-When(/^I click the '([^']*)' icon for the first task$/) do |icon|
+When /^I click the '([^']*)' icon for the first task$/ do |icon|
   within '#task-panel' do 
     within '.task', :match => :first do 
       click_link icon
@@ -60,6 +64,10 @@ When(/^I click the '([^']*)' icon for the first task$/) do |icon|
   end
 
   sleep 1
+end
+
+When /^the task is deleted$/ do 
+  @task.destroy
 end
 
 Then /^I should see (\d+) tasks? in the '([^' ]*)' column$/ do |count, column|
