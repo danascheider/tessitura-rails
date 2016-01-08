@@ -9,7 +9,7 @@ class Task < ActiveRecord::Base
   belongs_to :user
   has_one :deadline
   acts_as_list scope: :user, add_new_at: :top
-  accepts_nested_attributes_for :deadline
+  accepts_nested_attributes_for :deadline, reject_if: :all_blank
 
   def display_deadline
     return nil unless self.deadline
